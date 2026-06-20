@@ -1,0 +1,73 @@
+site_name: AI Engineering Playbook
+site_description: Team AI-Driven Development Guide
+site_author: Engineering Team
+
+theme:
+  name: material
+
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+
+plugins:
+  - search
+  - awesome-pages
+
+markdown_extensions:
+  - admonition
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - tables
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+
+  - Governance:
+      - Introduction: 01-governance/introduction.md
+      - Governance: 01-governance/governance.md
+      - Ownership Matrix: 01-governance/ownership-matrix.md
+      - Adoption Roadmap: 01-governance/adoption-roadmap.md
+
+  - Platform Setup:
+      - Claude Code: 02-platform-setup/claude-code.md
+      - AITMPL: 02-platform-setup/aitmpl.md
+      - MCP Setup: 02-platform-setup/mcp.md
+      - User Level Setup: 02-platform-setup/user-level-setup.md
+
+  - Agents:
+      - Backend Developer: 03-agents/backend-developer.md
+      - Frontend Developer: 03-agents/frontend-developer.md
+      - DevOps Engineer: 03-agents/devops-engineer.md
+      - Security Auditor: 03-agents/security-auditor.md
+      - System Analyst: 03-agents/system-analyst.md
+      - Solution Architect: 03-agents/solution-architect.md
+      - Platform Architect: 03-agents/platform-architect.md
+      - SpecFlow Orchestrator: 03-agents/specflow-orchestrator.md
+
+  - Skills:
+      - AWS Architect: 04-skills/aws-architect.md
+      - Terraform Expert: 04-skills/terraform-expert.md
+      - Platform Engineering: 04-skills/platform-engineering.md
+      - GitHub Spec Kit: 04-skills/github-spec-kit.md
+      - .NET Enterprise API: 04-skills/dotnet-enterprise-api.md
+      - React Enterprise: 04-skills/react-enterprise.md
+
+  - MCP:
+      - GitHub: 05-mcp/github.md
+      - Context7: 05-mcp/context7.md
+      - Terraform: 05-mcp/terraform.md
+      - AWS: 05-mcp/aws.md
+      - Docker: 05-mcp/docker.md
+
+  - Reference Projects:
+      - Product Management: 06-reference-projects/product-management.md
+      - Authentication & RBAC: 06-reference-projects/authentication-rbac.md
+      - AWS EC2 Hosted App: 06-reference-projects/aws-ec2-hosted-app.md
