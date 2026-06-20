@@ -87,4 +87,7 @@ nav:
       - Authentication & RBAC: 06-reference-projects/authentication-rbac.md
       - AWS EC2 Hosted App: 06-reference-projects/aws-ec2-hosted-app.md
 
+  - Spec-Driven SDLC:
+      - Lifecycle Overview: 07-spec-driven-sdlc/spec-driven-sdlc.md
+
   - Changelog: changelog.md
