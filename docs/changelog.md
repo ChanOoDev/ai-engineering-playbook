@@ -2,6 +2,12 @@
 
 All notable changes to the AI Engineering Playbook are documented here. The playbook follows [Semantic Versioning](https://semver.org/).
 
+## [1.5.0] - 2026-06-21
+
+### Added
+
+- **MkDocs and GitHub Pages Guide** (`02-platform-setup/mkdocs-github-pages-guide.md`) — single reference for MkDocs configuration, local development, Markdown extensions, Mermaid diagrams, GitHub Pages deployment pipeline, adding pages/sections, and troubleshooting. Includes annotated `mkdocs.yml`, workflow file explanation, and step-by-step setup instructions.
+
 ## [1.4.0] - 2026-06-21
 
 ### Added
@@ -83,4 +89,4 @@ All notable changes to the AI Engineering Playbook are documented here. The play
 - Governance framework with introduction, policies, ownership matrix, and adoption roadmap.
 
 ---
-*Last updated: 2026-06-21 | Version: 1.4*
+*Last updated: 2026-06-21 | Version: 1.5*
