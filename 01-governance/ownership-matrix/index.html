@@ -67,6 +67,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#ownership-matrix" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -307,6 +312,25 @@
   
 
       
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../changelog/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Changelog
+
+      </a>
+    </li>
+  
+
+      
     </ul>
   </div>
 </nav>
@@ -493,6 +517,26 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ownership Matrix
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -510,6 +554,47 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#decision-rights" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decision Rights
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#review-expectations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Review Expectations
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -640,6 +725,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../02-platform-setup/claude-md/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLAUDE.md
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../02-platform-setup/aitmpl/" class="md-nav__link">
         
   
@@ -668,6 +781,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../02-platform-setup/aitmpl-installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AITMPL Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../02-platform-setup/mcp/" class="md-nav__link">
         
   
@@ -676,6 +817,34 @@
     
   
     MCP Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-platform-setup/ci-cd-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CI/CD Integration
   
 
     
@@ -1584,6 +1753,33 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -1601,6 +1797,38 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#decision-rights" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decision Rights
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#review-expectations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Review Expectations
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -1617,9 +1845,87 @@
 
 
 
-  <h1>Ownership Matrix</h1>
-
-
+<h1 id="ownership-matrix">Ownership Matrix<a class="headerlink" href="#ownership-matrix" title="Permanent link">&para;</a></h1>
+<p>Clear ownership prevents AI-assisted delivery from becoming ambiguous. The matrix below identifies who is typically accountable for common responsibilities. Organizations can adapt the roles to match their structure.</p>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Accountable Role</th>
+<th>Supporting Roles</th>
+<th>Expected Outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AI usage policy</td>
+<td>Engineering leadership</td>
+<td>Security, legal, platform engineering</td>
+<td>Approved policy and risk boundaries</td>
+</tr>
+<tr>
+<td>Tool approval</td>
+<td>Platform engineering</td>
+<td>Security, procurement, architecture</td>
+<td>Approved tools and documented access model</td>
+</tr>
+<tr>
+<td>Data classification</td>
+<td>Security</td>
+<td>Data owners, engineering teams</td>
+<td>Clear guidance for what data can be used</td>
+</tr>
+<tr>
+<td>Agent definitions</td>
+<td>Architecture</td>
+<td>Engineering teams, platform engineering</td>
+<td>Consistent role descriptions and workflows</td>
+</tr>
+<tr>
+<td>Skill definitions</td>
+<td>Domain owners</td>
+<td>Senior engineers, platform engineering</td>
+<td>Reusable guidance for specialized work</td>
+</tr>
+<tr>
+<td>MCP integrations</td>
+<td>Platform engineering</td>
+<td>Security, tool owners</td>
+<td>Secure, documented integrations</td>
+</tr>
+<tr>
+<td>Code changes</td>
+<td>Feature team</td>
+<td>Reviewers, architects, QA</td>
+<td>Reviewed and tested implementation</td>
+</tr>
+<tr>
+<td>Infrastructure changes</td>
+<td>Platform or service owner</td>
+<td>Security, DevOps, architecture</td>
+<td>Least-privilege, validated deployment changes</td>
+</tr>
+<tr>
+<td>Documentation quality</td>
+<td>Documentation owner</td>
+<td>Engineering teams, product owners</td>
+<td>Accurate and maintainable public content</td>
+</tr>
+<tr>
+<td>Incident response</td>
+<td>Operations owner</td>
+<td>Engineering, security, platform</td>
+<td>Human-led incident handling with auditable support</td>
+</tr>
+</tbody>
+</table>
+<h2 id="decision-rights">Decision Rights<a class="headerlink" href="#decision-rights" title="Permanent link">&para;</a></h2>
+<p>AI systems may assist with analysis and drafting, but they do not own decisions. Product owners approve scope, engineering owners approve implementation, architects approve cross-system design, security owners approve risk exceptions, and operations owners approve production procedures.</p>
+<h2 id="review-expectations">Review Expectations<a class="headerlink" href="#review-expectations" title="Permanent link">&para;</a></h2>
+<p>Each AI-assisted change should have a named human owner. That owner is responsible for confirming that the output is accurate, secure, tested, and aligned with project standards.</p>
+<p>For low-risk documentation edits, a lightweight review may be enough. For production code, infrastructure, authentication, authorization, data handling, or operational workflows, teams should require stronger review and validation.</p>
+<hr />
+<p><em>Last updated: 2026-06-21 | Version: 1.1</em></p>
 
 
 
