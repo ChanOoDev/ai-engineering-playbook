@@ -52,6 +52,7 @@ nav:
       - AITMPL Installation: 02-platform-setup/aitmpl-installation.md
       - MCP Setup: 02-platform-setup/mcp.md
       - CI/CD Integration: 02-platform-setup/ci-cd-integration.md
+      - MkDocs and GitHub Pages Guide: 02-platform-setup/mkdocs-github-pages-guide.md
       - AI Troubleshooting: 02-platform-setup/ai-troubleshooting.md
       - User Level Setup: 02-platform-setup/user-level-setup.md
 
