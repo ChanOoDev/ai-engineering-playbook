@@ -14,6 +14,8 @@ This glossary defines the operating terms used throughout the AI Engineering Pla
 
 ## C
 
+**CI/CD (Continuous Integration / Continuous Delivery)** — The practice of automatically building, testing, and deploying code changes. CI runs tests on every push; CD deploys approved changes to production. AI-assisted workflows often integrate with CI/CD pipelines for automated review and validation. See [CI/CD Integration](02-platform-setup/ci-cd-integration.md).
+
 **CLAUDE.md** — A special file in a repository that Claude Code reads automatically when it starts a session. It contains project-specific context, conventions, constraints, and guardrails. Think of it as the bridge between governance rules and the AI workflow. See [CLAUDE.md](02-platform-setup/claude-md.md).
 
 ## D
@@ -27,6 +29,10 @@ This glossary defines the operating terms used throughout the AI Engineering Pla
 ## H
 
 **Human-in-the-Loop** — A workflow pattern where AI drafts, analyzes, or generates output, but humans decide, review, and approve. The playbook requires human-in-the-loop for all AI-assisted work.
+
+## I
+
+**IAM (Identity and Access Management)** — AWS service and general concept for managing who can access what. IAM policies define permissions for users, roles, and services. AI-assisted workflows often review IAM configurations for least-privilege compliance.
 
 ## L
 
@@ -45,6 +51,8 @@ This glossary defines the operating terms used throughout the AI Engineering Pla
 **Paved Road** — Platform engineering term for a pre-built, supported workflow that teams can adopt instead of building from scratch. Similar to "golden path."
 
 **Permission Profile** — The set of actions an MCP integration is allowed to perform. For example, a GitHub MCP integration might have read-only access to repositories but no write access.
+
+**PR (Pull Request)** — A GitHub mechanism for proposing changes from one branch to another. PRs are the primary way AI-assisted code enters the codebase — they require human review, CI checks, and approval before merge. See [First AI-Assisted PR](02-platform-setup/first-ai-assisted-pr.md).
 
 ## R
 

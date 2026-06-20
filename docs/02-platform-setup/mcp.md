@@ -84,14 +84,17 @@ Most teams should manage MCP configuration through approved developer environmen
 
 ## Common MCP Integration Patterns
 
-| MCP Integration | Purpose | Typical Use Cases | Security Considerations |
-| --- | --- | --- | --- |
-| GitHub MCP | Repository, issue, pull request, and workflow context | PR summaries, issue lookup, CI failure triage | Prefer read-only access; protect private issue and log content |
-| Terraform MCP | Infrastructure-as-code review and plan interpretation | Plan review, module analysis, drift investigation | Never auto-apply production plans; protect state and secrets |
-| AWS MCP | Cloud resource inspection and operational analysis | IAM review, log summaries, inventory, cost investigation | Use short-lived, least-privilege roles; separate production access |
-| Kubernetes MCP | Cluster and workload inspection | Pod health, deployment state, event analysis, manifest review | Avoid broad cluster-admin access; redact secrets and config maps |
-| Vercel MCP | Frontend deployment and project context | Deployment inspection, preview status, environment review | Protect environment variables and production deployment controls |
-| Supabase MCP | Database and backend service context | Schema inspection, migration review, auth/storage analysis | Prefer read-only database access; protect service role keys and PII |
+The table below shows common MCP integrations. Those with dedicated setup pages in this playbook are linked. Others are listed as patterns teams may adopt with appropriate review.
+
+| MCP Integration | Purpose | Typical Use Cases | Security Considerations | Setup Guide |
+| --- | --- | --- | --- | --- |
+| [GitHub MCP](../05-mcp/github.md) | Repository, issue, pull request, and workflow context | PR summaries, issue lookup, CI failure triage | Prefer read-only access; protect private issue and log content | [GitHub](../05-mcp/github.md) |
+| [Terraform MCP](../05-mcp/terraform.md) | Infrastructure-as-code review and plan interpretation | Plan review, module analysis, drift investigation | Never auto-apply production plans; protect state and secrets | [Terraform](../05-mcp/terraform.md) |
+| [AWS MCP](../05-mcp/aws.md) | Cloud resource inspection and operational analysis | IAM review, log summaries, inventory, cost investigation | Use short-lived, least-privilege roles; separate production access | [AWS](../05-mcp/aws.md) |
+| [Docker MCP](../05-mcp/docker.md) | Container and image inspection | Dockerfile review, build diagnostics, image analysis | Limit host access; protect mounted volumes and env vars | [Docker](../05-mcp/docker.md) |
+| [Context7 MCP](../05-mcp/context7.md) | Library and framework documentation lookup | API syntax checks, migration guidance, version-specific docs | No sensitive data exposure; verify docs match project versions | [Context7](../05-mcp/context7.md) |
+| Kubernetes MCP | Cluster and workload inspection | Pod health, deployment state, event analysis, manifest review | Avoid broad cluster-admin access; redact secrets and config maps | Team-documented |
+| Vercel MCP | Frontend deployment and project context | Deployment inspection, preview status, environment review | Protect environment variables and production deployment controls | Team-documented |
 
 Add integrations incrementally. Start with read-only repository and documentation integrations before enabling cloud, database, or production operations.
 

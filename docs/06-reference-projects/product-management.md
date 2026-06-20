@@ -19,7 +19,7 @@ A typical implementation includes:
 
 ## AI-Assisted Workflow
 
-The System Analyst agent can clarify product lifecycle rules and acceptance criteria. The Solution Architect can define service boundaries and integration contracts. Backend and Frontend agents can implement the API and interface. The Security Auditor can review access control, auditability, and data exposure.
+The [System Analyst](../03-agents/system-analyst.md) agent can clarify product lifecycle rules and acceptance criteria. The [Solution Architect](../03-agents/solution-architect.md) can define service boundaries and integration contracts. [Backend](../03-agents/backend-developer.md) and [Frontend](../03-agents/frontend-developer.md) agents can implement the API and interface. The [Security Auditor](../03-agents/security-auditor.md) can review access control, auditability, and data exposure.
 
 ## Documentation Outputs
 

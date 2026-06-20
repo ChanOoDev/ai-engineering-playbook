@@ -445,6 +445,64 @@ git log -S "functionName"          # find commits that added/removed a string
 git log -G "regex"                 # find commits matching a regex
 ```
 
+### Find a Bug with Bisect
+
+```bash
+git bisect start                   # start bisect session
+git bisect bad                     # mark current commit as bad
+git bisect good <commit-hash>      # mark a known good commit
+# Git checks out a middle commit — test it, then mark:
+git bisect good                    # if this commit works
+git bisect bad                     # if this commit is broken
+# Repeat until Git finds the first bad commit
+git bisect reset                   # end bisect session
+```
+
+Automate with a test command:
+
+```bash
+git bisect start HEAD <good-commit>
+git bisect run npm test            # automatically runs test on each commit
+git bisect reset
+```
+
+## Ignoring Files
+
+### .gitignore Basics
+
+Create a `.gitignore` file in the repository root to exclude files from tracking:
+
+```bash
+# Common patterns
+node_modules/          # dependencies
+*.log                  # log files
+.env                   # environment variables
+dist/                  # build output
+__pycache__/           # Python bytecode
+.vscode/               # editor settings
+.DS_Store              # macOS metadata
+```
+
+### Check What's Ignored
+
+```bash
+git status --ignored               # show ignored files
+git check-ignore -v <file>         # check why a file is ignored
+```
+
+### Remove a File from Tracking (Keep Locally)
+
+```bash
+git rm --cached <file>             # untrack but keep on disk
+git rm -r --cached <folder>        # untrack folder
+```
+
+### Global Ignore
+
+```bash
+git config --global core.excludesfile ~/.gitignore_global
+```
+
 ## Configuration
 
 ### Useful Aliases

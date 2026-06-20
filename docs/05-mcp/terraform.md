@@ -38,7 +38,7 @@ A typical Claude Code MCP configuration for Terraform:
   "mcpServers": {
     "terraform": {
       "command": "npx",
-      "args": ["-y", "@anthropic/terraform-mcp-server"],
+      "args": ["-y", "@modelcontextprotocol/terraform-mcp-server"],
       "env": {
         "TF_WORKSPACE": "${TF_WORKSPACE}"
       }
@@ -46,6 +46,8 @@ A typical Claude Code MCP configuration for Terraform:
   }
 }
 ```
+
+Check the [MCP Registry](https://github.com/modelcontextprotocol/registry) for the latest approved package name for your environment.
 
 ## Example Prompts
 

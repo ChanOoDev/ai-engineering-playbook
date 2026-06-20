@@ -19,7 +19,7 @@ A typical implementation includes:
 
 ## AI-Assisted Workflow
 
-The System Analyst can define actors, permissions, and protected workflows. The Solution Architect can choose the authorization model. Backend and Frontend agents can implement policy checks and user experience behavior. The Security Auditor should review the design before release.
+The [System Analyst](../03-agents/system-analyst.md) can define actors, permissions, and protected workflows. The [Solution Architect](../03-agents/solution-architect.md) can choose the authorization model. [Backend](../03-agents/backend-developer.md) and [Frontend](../03-agents/frontend-developer.md) agents can implement policy checks and user experience behavior. The [Security Auditor](../03-agents/security-auditor.md) should review the design before release.
 
 ## Documentation Outputs
 

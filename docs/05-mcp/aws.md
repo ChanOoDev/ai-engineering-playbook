@@ -35,7 +35,7 @@ A typical Claude Code MCP configuration for AWS (read-only):
   "mcpServers": {
     "aws": {
       "command": "npx",
-      "args": ["-y", "@anthropic/aws-mcp-server"],
+      "args": ["-y", "@awslabs/mcp-server-aws"],
       "env": {
         "AWS_PROFILE": "readonly-dev",
         "AWS_REGION": "us-east-1"
@@ -44,6 +44,8 @@ A typical Claude Code MCP configuration for AWS (read-only):
   }
 }
 ```
+
+Check the [AWS Labs MCP repository](https://github.com/awslabs/mcp) for the latest package name and configuration options.
 
 Use a read-only IAM role. Never use administrator credentials for AI-assisted work.
 

@@ -124,9 +124,9 @@ MCP integrations should be used where they improve context, traceability, or aut
 | Requirements | GitHub MCP | Read issues, inspect project backlog, link requirements to pull requests |
 | Architecture | Context7 MCP | Retrieve current framework or library documentation while drafting decisions |
 | Infrastructure | Terraform MCP, AWS MCP | Inspect modules, validate infrastructure assumptions, review cloud resources |
-| Development | GitHub MCP, Context7 MCP | Review repository conventions, reference APIs, prepare implementation notes |
-| Deployment | GitHub MCP, AWS MCP, Kubernetes MCP | Review pipeline status, deployment history, runtime configuration, release evidence |
-| Operations | AWS MCP, Kubernetes MCP, monitoring-related MCPs | Inspect operational state, summarize incidents, support runbook updates |
+| Development | GitHub MCP, Context7 MCP, Docker MCP | Review repository conventions, reference APIs, inspect container builds |
+| Deployment | GitHub MCP, AWS MCP, Docker MCP | Review pipeline status, deployment history, container configuration, release evidence |
+| Operations | AWS MCP, Docker MCP | Inspect operational state, summarize incidents, support runbook updates |
 
 ## Sample Workflow by Reference Project
 

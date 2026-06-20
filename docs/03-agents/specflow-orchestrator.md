@@ -5,6 +5,9 @@
 
 The SpecFlow Orchestrator agent coordinates specification-driven delivery. It helps move from product intent to analysis, architecture, implementation, tests, documentation, and release readiness through an ordered workflow.
 
+!!! info "About the Name"
+    The name "SpecFlow" refers to specification-driven delivery — the practice of moving from requirements through implementation in structured stages. It is not tied to the SpecFlow BDD testing framework or Gherkin syntax. This agent orchestrates the delivery workflow regardless of which testing tools or specification formats your team uses.
+
 ## Responsibilities
 
 - Break broad requests into structured delivery stages.

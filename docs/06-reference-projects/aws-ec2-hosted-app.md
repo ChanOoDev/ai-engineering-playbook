@@ -22,7 +22,7 @@ A typical implementation includes:
 
 ## AI-Assisted Workflow
 
-The AWS Architect can review the cloud design. The Terraform Expert can implement or inspect infrastructure-as-code. The DevOps Engineer can define deployment and rollback workflows. The Security Auditor can review IAM, network exposure, encryption, and operational access.
+The [AWS Architect](../04-skills/aws-architect.md) skill can review the cloud design. The [Terraform Expert](../04-skills/terraform-expert.md) can implement or inspect infrastructure-as-code. The [DevOps Engineer](../03-agents/devops-engineer.md) agent can define deployment and rollback workflows. The [Security Auditor](../03-agents/security-auditor.md) can review IAM, network exposure, encryption, and operational access.
 
 ## Documentation Outputs
 

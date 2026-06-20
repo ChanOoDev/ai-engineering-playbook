@@ -151,6 +151,10 @@ on:
   pull_request:
     types: [opened, synchronize, ready_for_review]
 
+permissions:
+  pull-requests: write
+  contents: read
+
 jobs:
   ai-review:
     if: '!github.event.pull_request.draft'
@@ -165,22 +169,47 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
-          # Generate and post summary comment
-          ...
+          DIFF=$(git diff origin/${{ github.base_ref }}...HEAD)
+          SUMMARY=$(claude -p "Summarize this PR diff for reviewers.
+          Include: what changed, files affected, risk areas, and testing
+          suggestions. Be concise.
+          
+          Diff:
+          $DIFF")
+          gh pr comment ${{ github.event.number }} --body "$SUMMARY"
 
       # Step 2: Check for common issues
       - name: Automated Review
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
-          # Run focused checks on changed files
-          ...
+          DIFF=$(git diff origin/${{ github.base_ref }}...HEAD --name-only)
+          REVIEW=$(claude -p "Review these changed files for common issues:
+          hardcoded secrets, missing error handling, insecure defaults,
+          missing tests. Flag only real issues with severity.
+          
+          Files:
+          $DIFF")
+          echo "$REVIEW"
 
       # Step 3: Verify governance compliance
       - name: Governance Check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Check PR description, reviewers, labels
-          ...
+          # Check PR has description
+          BODY=$(gh pr view ${{ github.event.number }} --json body -q '.body')
+          if [ -z "$BODY" ]; then
+            echo "PR requires a description per governance standards"
+            exit 1
+          fi
+          
+          # Check reviewers assigned
+          REVIEWERS=$(gh pr view ${{ github.event.number }} --json reviewers -q '.reviewers | length')
+          if [ "$REVIEWERS" -lt 1 ]; then
+            echo "PR requires at least one reviewer"
+            exit 1
+          fi
 ```
 
 ## CI Hardening Guidance

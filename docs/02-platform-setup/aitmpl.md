@@ -20,6 +20,54 @@ A practical AITMPL template includes:
 - **Output format** - the expected structure of the response or artifact.
 - **Validation** - checks the user or AI should perform before accepting the result.
 
+## Example Template
+
+Here is a complete template for reviewing a pull request:
+
+```markdown
+# PR Review Template
+
+## Purpose
+Review a pull request for correctness, security, and maintainability.
+
+## Inputs
+- PR diff or link
+- Related issue or user story
+- CLAUDE.md or project conventions
+
+## Context
+This is a backend API service using .NET 8, EF Core, and PostgreSQL.
+All endpoints require authentication unless explicitly marked otherwise.
+
+## Instructions
+1. Read the diff and identify what changed.
+2. Check each change against the review focus areas below.
+3. For each finding, provide: file, line, severity, description, suggestion.
+4. Summarize the overall risk level and whether the PR is safe to merge.
+
+## Constraints
+- Do not suggest changes outside the PR scope.
+- Do not approve security-sensitive changes without flagging them.
+- Do not modify files — only report findings.
+
+## Output Format
+### Summary
+One paragraph: what the PR does and overall risk level.
+
+### Findings
+| File | Line | Severity | Issue | Suggestion |
+|------|------|----------|-------|------------|
+| ... | ... | critical/warning/suggestion | ... | ... |
+
+### Verdict
+Safe to merge / Needs changes / Needs security review
+
+## Validation
+- Verify findings are specific (file + line, not vague)
+- Verify severity is realistic (not everything is "critical")
+- Verify suggestions are actionable
+```
+
 ## Example Uses
 
 - Generate an implementation plan from a product requirement.
