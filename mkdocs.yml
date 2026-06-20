@@ -47,6 +47,7 @@ nav:
       - Junior Developer Quick Start: 02-platform-setup/junior-developer-quickstart.md
       - Git Daily Usage: 02-platform-setup/git-daily-usage.md
       - CLAUDE.md: 02-platform-setup/claude-md.md
+      - Configuration Reference: 02-platform-setup/configuration-reference.md
       - AITMPL: 02-platform-setup/aitmpl.md
       - AITMPL Installation: 02-platform-setup/aitmpl-installation.md
       - MCP Setup: 02-platform-setup/mcp.md
