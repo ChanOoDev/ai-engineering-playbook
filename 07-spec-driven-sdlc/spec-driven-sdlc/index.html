@@ -1,0 +1,3442 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Team AI-Driven Development Guide">
+      
+      
+        <meta name="author" content="Engineering Team">
+      
+      
+      
+        <link rel="prev" href="../../06-reference-projects/aws-ec2-hosted-app/">
+      
+      
+        <link rel="next" href="../../changelog/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Lifecycle Overview - AI Engineering Playbook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#spec-driven-software-development-lifecycle-with-ai-assist" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="AI Engineering Playbook" class="md-header__button md-logo" aria-label="AI Engineering Playbook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI Engineering Playbook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lifecycle Overview
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../glossary/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Glossary
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../01-governance/introduction/" class="md-tabs__link">
+          
+  
+  
+  Governance
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../02-platform-setup/claude-code/" class="md-tabs__link">
+          
+  
+  
+  Platform Setup
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../03-agents/agent-skill-selection/" class="md-tabs__link">
+          
+  
+  
+  Agents
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../04-skills/aws-architect/" class="md-tabs__link">
+          
+  
+  
+  Skills
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../05-mcp/github/" class="md-tabs__link">
+          
+  
+  
+  MCP
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../06-reference-projects/implementation-guide/" class="md-tabs__link">
+          
+  
+  
+  Reference Projects
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  Spec-Driven SDLC
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../changelog/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Changelog
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="AI Engineering Playbook" class="md-nav__button md-logo" aria-label="AI Engineering Playbook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AI Engineering Playbook
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Governance
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Governance
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-governance/introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-governance/governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Governance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-governance/ownership-matrix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ownership Matrix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-governance/adoption-roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Adoption Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform Setup
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Platform Setup
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-platform-setup/claude-code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-platform-setup/first-ai-assisted-pr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    First AI-Assisted PR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-platform-setup/junior-developer-quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Junior Developer Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-platform-setup/git-daily-usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git Daily Usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-platform-setup/claude-md/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLAUDE.md
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-platform-setup/configuration-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-platform-setup/aitmpl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AITMPL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-platform-setup/aitmpl-installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AITMPL Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-platform-setup/mcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MCP Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-platform-setup/ci-cd-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CI/CD Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-platform-setup/ai-troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-platform-setup/user-level-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Level Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agents
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Agents
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-agents/agent-skill-selection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agent and Skill Selection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-agents/backend-developer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backend Developer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-agents/frontend-developer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Frontend Developer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-agents/devops-engineer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DevOps Engineer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-agents/security-auditor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security Auditor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-agents/system-analyst/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System Analyst
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-agents/solution-architect/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Solution Architect
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-agents/platform-architect/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform Architect
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-agents/specflow-orchestrator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SpecFlow Orchestrator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skills
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Skills
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-skills/aws-architect/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS Architect
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-skills/terraform-expert/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Terraform Expert
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-skills/platform-engineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform Engineering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-skills/github-spec-kit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GitHub Spec Kit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-skills/dotnet-enterprise-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    .NET Enterprise API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-skills/react-enterprise/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    React Enterprise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MCP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    MCP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-mcp/github/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GitHub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-mcp/context7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Context7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-mcp/terraform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Terraform
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-mcp/aws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-mcp/docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference Projects
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference Projects
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06-reference-projects/implementation-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implementation Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06-reference-projects/product-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Product Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06-reference-projects/authentication-rbac/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authentication & RBAC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06-reference-projects/aws-ec2-hosted-app/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS EC2 Hosted App
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spec-Driven SDLC
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Spec-Driven SDLC
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lifecycle Overview
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lifecycle Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-core-idea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Core Idea
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lifecycle-phases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lifecycle Phases
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lifecycle Phases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-1-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 1: Specification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-2-analysis-refinement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 2: Analysis &amp; Refinement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-3-design-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 3: Design &amp; Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-4-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 4: Implementation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-5-test-validate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 5: Test &amp; Validate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-6-review-approve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 6: Review &amp; Approve
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-7-deploy-operate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 7: Deploy &amp; Operate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-8-learn-improve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 8: Learn &amp; Improve
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#full-lifecycle-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Full Lifecycle Diagram
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agent-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agent Mapping
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pros-and-cons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pros and Cons
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pros and Cons">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pros" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pros
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cons
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-use-spec-driven-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to Use Spec-Driven Development
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lightweight-vs-full-spec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lightweight vs. Full Spec
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lightweight vs. Full Spec">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lightweight-spec-1-2-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lightweight Spec (1-2 pages)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#full-spec-3-10-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Full Spec (3-10 pages)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decision-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decision Guide
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-full-lifecycle-walkthrough" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: Full Lifecycle Walkthrough
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Example: Full Lifecycle Walkthrough">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spec-phase-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spec (Phase 1)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#design-phase-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design (Phase 3)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-phase-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test (Phase 5)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deployment-phase-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deployment (Phase 7)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Pages
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-core-idea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Core Idea
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lifecycle-phases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lifecycle Phases
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lifecycle Phases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-1-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 1: Specification
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-2-analysis-refinement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 2: Analysis &amp; Refinement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-3-design-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 3: Design &amp; Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-4-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 4: Implementation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-5-test-validate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 5: Test &amp; Validate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-6-review-approve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 6: Review &amp; Approve
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-7-deploy-operate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 7: Deploy &amp; Operate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-8-learn-improve" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase 8: Learn &amp; Improve
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#full-lifecycle-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Full Lifecycle Diagram
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agent-mapping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agent Mapping
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pros-and-cons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pros and Cons
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pros and Cons">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pros" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pros
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cons
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-use-spec-driven-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When to Use Spec-Driven Development
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lightweight-vs-full-spec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lightweight vs. Full Spec
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lightweight vs. Full Spec">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lightweight-spec-1-2-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lightweight Spec (1-2 pages)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#full-spec-3-10-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Full Spec (3-10 pages)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decision-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decision Guide
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-full-lifecycle-walkthrough" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example: Full Lifecycle Walkthrough
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Example: Full Lifecycle Walkthrough">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spec-phase-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spec (Phase 1)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#design-phase-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Design (Phase 3)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-phase-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test (Phase 5)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deployment-phase-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deployment (Phase 7)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Pages
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="spec-driven-software-development-lifecycle-with-ai-assist">Spec-Driven Software Development Lifecycle with AI Assist<a class="headerlink" href="#spec-driven-software-development-lifecycle-with-ai-assist" title="Permanent link">&para;</a></h1>
+<p>Spec-driven development is a practice where a specification (spec) is written before implementation. The spec defines what the system should do, how it should behave, and what constraints apply. AI assists at every stage — drafting specs, analyzing gaps, generating code, writing tests, and validating compliance.</p>
+<p>This page explains the full lifecycle, shows how AI fits into each phase, and gives an honest assessment of the pros and cons.</p>
+<h2 id="the-core-idea">The Core Idea<a class="headerlink" href="#the-core-idea" title="Permanent link">&para;</a></h2>
+<p>Traditional development often starts with code. Spec-driven development starts with a document that captures intent before any implementation begins. The spec becomes the contract between product, engineering, and quality.</p>
+<p>With AI assist, the spec is not just documentation — it is the input that drives generation, validation, and review throughout the lifecycle.</p>
+<pre class="mermaid"><code>flowchart TD
+    spec[Specification] --&gt; analyze[Analyze &amp; Refine]
+    analyze --&gt; design[Design &amp; Architecture]
+    design --&gt; implement[Implement]
+    implement --&gt; test[Test &amp; Validate]
+    test --&gt; review[Review &amp; Approve]
+    review --&gt; deploy[Deploy &amp; Operate]
+    deploy --&gt; learn[Learn &amp; Improve]
+    learn --&gt; spec
+
+    ai1[AI: Draft spec, find gaps] -.-&gt; spec
+    ai2[AI: Identify risks, edge cases] -.-&gt; analyze
+    ai3[AI: Generate architecture options] -.-&gt; design
+    ai4[AI: Generate code from spec] -.-&gt; implement
+    ai5[AI: Generate tests from spec] -.-&gt; test
+    ai6[AI: Check spec compliance] -.-&gt; review
+    ai7[AI: Generate runbooks, monitor] -.-&gt; deploy
+    ai8[AI: Summarize feedback, update spec] -.-&gt; learn</code></pre>
+<h2 id="lifecycle-phases">Lifecycle Phases<a class="headerlink" href="#lifecycle-phases" title="Permanent link">&para;</a></h2>
+<h3 id="phase-1-specification">Phase 1: Specification<a class="headerlink" href="#phase-1-specification" title="Permanent link">&para;</a></h3>
+<p><strong>What happens:</strong> A product owner, analyst, or engineer writes a specification that defines the desired behavior. The spec includes user stories, acceptance criteria, business rules, constraints, and edge cases.</p>
+<p><strong>AI assist:</strong>
+- Draft spec from a product brief or feature request
+- Identify missing acceptance criteria
+- Suggest edge cases based on similar patterns
+- Generate user story variations
+- Check for ambiguity or contradictions</p>
+<p><strong>Human role:</strong> Validate the spec reflects real business intent. Confirm scope, priorities, and constraints. Approve before implementation begins.</p>
+<p><strong>Artifacts:</strong>
+- Product specification
+- User stories with acceptance criteria
+- Business rules and constraints
+- Edge cases and error scenarios
+- Out-of-scope declarations</p>
+<p><strong>Example prompt:</strong>
+<div class="highlight"><pre><span></span><code>Draft a specification for a bulk product import feature.
+Include: user stories, acceptance criteria, business rules,
+edge cases, and out-of-scope items. Flag any ambiguity you find.
+</code></pre></div></p>
+<h3 id="phase-2-analysis-refinement">Phase 2: Analysis &amp; Refinement<a class="headerlink" href="#phase-2-analysis-refinement" title="Permanent link">&para;</a></h3>
+<p><strong>What happens:</strong> The spec is analyzed for completeness, consistency, and feasibility. Analysts identify gaps, resolve contradictions, and confirm assumptions with stakeholders.</p>
+<p><strong>AI assist:</strong>
+- Analyze spec for missing scenarios
+- Identify conflicts between business rules
+- Map requirements to affected systems
+- Generate questions for stakeholders
+- Create domain models from requirements</p>
+<p><strong>Human role:</strong> Resolve ambiguity. Make decisions on trade-offs. Confirm assumptions with business stakeholders.</p>
+<p><strong>Artifacts:</strong>
+- Gap analysis
+- Resolved questions and decisions
+- Domain model
+- Affected systems map
+- Risk register</p>
+<p><strong>Example prompt:</strong>
+<div class="highlight"><pre><span></span><code>Analyze this specification for gaps and contradictions.
+Identify missing acceptance criteria, conflicting rules,
+and any assumptions that need stakeholder confirmation.
+Present as a numbered list with severity (critical/high/low).
+</code></pre></div></p>
+<h3 id="phase-3-design-architecture">Phase 3: Design &amp; Architecture<a class="headerlink" href="#phase-3-design-architecture" title="Permanent link">&para;</a></h3>
+<p><strong>What happens:</strong> Architects and engineers design the solution. They define service boundaries, API contracts, data models, integration patterns, and deployment architecture.</p>
+<p><strong>AI assist:</strong>
+- Generate architecture options with trade-offs
+- Draft API contracts from requirements
+- Propose data models
+- Identify integration points
+- Generate architecture decision records (ADRs)</p>
+<p><strong>Human role:</strong> Select the architecture approach. Approve trade-offs. Confirm alignment with platform standards.</p>
+<p><strong>Artifacts:</strong>
+- Architecture overview
+- API contracts (OpenAPI)
+- Data model
+- ADRs for major decisions
+- Sequence diagrams</p>
+<p><strong>Example prompt:</strong>
+<div class="highlight"><pre><span></span><code>Design the architecture for this spec. Provide:
+- 2 architecture options with trade-offs
+- API contract (OpenAPI) for the primary endpoints
+- Data model with relationships
+- Integration points with existing systems
+- Recommended approach with justification
+</code></pre></div></p>
+<h3 id="phase-4-implementation">Phase 4: Implementation<a class="headerlink" href="#phase-4-implementation" title="Permanent link">&para;</a></h3>
+<p><strong>What happens:</strong> Engineers write the code. The spec drives what gets built — every feature maps back to a spec requirement.</p>
+<p><strong>AI assist:</strong>
+- Generate code from the spec and API contract
+- Follow project conventions from CLAUDE.md
+- Implement validation rules from business rules
+- Generate migration scripts from data model
+- Suggest implementation patterns</p>
+<p><strong>Human role:</strong> Review generated code. Ensure it follows conventions. Verify it actually implements the spec. Own the final code.</p>
+<p><strong>Artifacts:</strong>
+- Implementation code
+- Database migrations
+- Configuration changes
+- Documentation updates</p>
+<p><strong>Example prompt:</strong>
+<div class="highlight"><pre><span></span><code>Implement the POST /api/products/import endpoint based on this spec:
+- Accept CSV with Name, SKU, Price, CategoryId
+- Validate each row, reject duplicates, return errors for invalid rows
+- Create products in Draft status
+- Write audit log entry
+- Follow patterns in src/Services/
+
+Run tests after implementation.
+</code></pre></div></p>
+<h3 id="phase-5-test-validate">Phase 5: Test &amp; Validate<a class="headerlink" href="#phase-5-test-validate" title="Permanent link">&para;</a></h3>
+<p><strong>What happens:</strong> Tests are written to verify the implementation matches the spec. Every acceptance criterion should have at least one test.</p>
+<p><strong>AI assist:</strong>
+- Generate test cases from acceptance criteria
+- Generate negative tests from edge cases
+- Identify untested scenarios
+- Generate test data
+- Run tests and analyze failures</p>
+<p><strong>Human role:</strong> Verify tests are meaningful, not just passing. Confirm edge cases are covered. Own test quality.</p>
+<p><strong>Artifacts:</strong>
+- Test plan
+- Unit tests
+- Integration tests
+- Contract tests
+- Test results and coverage</p>
+<p><strong>Example prompt:</strong>
+<div class="highlight"><pre><span></span><code>Generate integration tests for the bulk import endpoint.
+Cover every acceptance criterion from the spec:
+- Valid CSV with 50 products → all created
+- Duplicate SKUs → error listing duplicates
+- Missing column → clear error message
+- Empty file → 400 Bad Request
+- File &gt; 10MB → 413 Payload Too Large
+
+Use Testcontainers with PostgreSQL. Follow existing test patterns.
+</code></pre></div></p>
+<h3 id="phase-6-review-approve">Phase 6: Review &amp; Approve<a class="headerlink" href="#phase-6-review-approve" title="Permanent link">&para;</a></h3>
+<p><strong>What happens:</strong> The implementation is reviewed against the spec. Reviewers check that code matches requirements, tests cover scenarios, and security is addressed.</p>
+<p><strong>AI assist:</strong>
+- Check implementation against spec compliance
+- Identify unimplemented requirements
+- Review for security concerns
+- Generate PR summary linking to spec
+- Flag deviations from spec</p>
+<p><strong>Human role:</strong> Approve the implementation. Make judgment calls on edge cases. Sign off on security and quality.</p>
+<p><strong>Artifacts:</strong>
+- PR description with spec references
+- Review comments
+- Security review findings
+- Approval decisions</p>
+<p><strong>Example prompt:</strong>
+<div class="highlight"><pre><span></span><code>Review this PR against the specification.
+Check: does the implementation cover all acceptance criteria?
+Are all edge cases handled? Are there any deviations from spec?
+Flag with severity and suggest fixes.
+</code></pre></div></p>
+<h3 id="phase-7-deploy-operate">Phase 7: Deploy &amp; Operate<a class="headerlink" href="#phase-7-deploy-operate" title="Permanent link">&para;</a></h3>
+<p><strong>What happens:</strong> The feature is deployed to production. Operations teams monitor behavior, handle incidents, and ensure the feature works as specified in production.</p>
+<p><strong>AI assist:</strong>
+- Generate deployment runbook from spec
+- Generate monitoring rules from acceptance criteria
+- Summarize production logs and metrics
+- Draft incident response procedures
+- Generate rollback plans</p>
+<p><strong>Human role:</strong> Approve deployment. Monitor production. Respond to incidents. Own operational decisions.</p>
+<p><strong>Artifacts:</strong>
+- Deployment runbook
+- Monitoring dashboards
+- Alert rules
+- Rollback procedure
+- Incident response notes</p>
+<p><strong>Example prompt:</strong>
+<div class="highlight"><pre><span></span><code>Generate a deployment runbook for this feature.
+Include: preconditions, deployment steps, verification steps,
+rollback steps, and monitoring rules based on the acceptance criteria.
+</code></pre></div></p>
+<h3 id="phase-8-learn-improve">Phase 8: Learn &amp; Improve<a class="headerlink" href="#phase-8-learn-improve" title="Permanent link">&para;</a></h3>
+<p><strong>What happens:</strong> After deployment, the team reflects on what worked, what didn't, and what should change. Feedback flows back into the spec for the next iteration.</p>
+<p><strong>AI assist:</strong>
+- Summarize production feedback
+- Identify spec gaps found in production
+- Suggest spec improvements
+- Generate retrospective notes
+- Update documentation</p>
+<p><strong>Human role:</strong> Decide what to change. Prioritize improvements. Update the spec.</p>
+<p><strong>Artifacts:</strong>
+- Retrospective notes
+- Updated specification
+- Backlog items for next iteration
+- Documentation updates</p>
+<p><strong>Example prompt:</strong>
+<div class="highlight"><pre><span></span><code>Summarize production feedback for this feature.
+What acceptance criteria were met? What issues were found?
+What should we add to the spec for the next iteration?
+</code></pre></div></p>
+<h2 id="full-lifecycle-diagram">Full Lifecycle Diagram<a class="headerlink" href="#full-lifecycle-diagram" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart LR
+    subgraph Specify
+        S1[Product Brief] --&gt; S2[Draft Spec]
+        S2 --&gt; S3[Review &amp; Approve Spec]
+    end
+
+    subgraph Design
+        D1[Analyze Gaps] --&gt; D2[Architecture]
+        D2 --&gt; D3[API Contract]
+        D3 --&gt; D4[ADR]
+    end
+
+    subgraph Build
+        B1[Implement Code] --&gt; B2[Write Tests]
+        B2 --&gt; B3[Documentation]
+    end
+
+    subgraph Validate
+        V1[PR Review] --&gt; V2[Security Review]
+        V2 --&gt; V3[Spec Compliance Check]
+    end
+
+    subgraph Release
+        R1[Deploy] --&gt; R2[Monitor]
+        R2 --&gt; R3[Operate]
+    end
+
+    subgraph Learn
+        L1[Feedback] --&gt; L2[Retrospective]
+        L2 --&gt; L3[Update Spec]
+    end
+
+    S3 --&gt; D1
+    D4 --&gt; B1
+    B3 --&gt; V1
+    V3 --&gt; R1
+    R3 --&gt; L1
+    L3 --&gt; S2
+
+    AI[AI Assist] -.-&gt; S2
+    AI -.-&gt; D1
+    AI -.-&gt; D2
+    AI -.-&gt; B1
+    AI -.-&gt; B2
+    AI -.-&gt; V1
+    AI -.-&gt; V3
+    AI -.-&gt; R1
+    AI -.-&gt; L1</code></pre>
+<h2 id="agent-mapping">Agent Mapping<a class="headerlink" href="#agent-mapping" title="Permanent link">&para;</a></h2>
+<p>Each phase maps to specific agents and skills:</p>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Primary Agent</th>
+<th>Supporting Skill</th>
+<th>MCP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Specification</td>
+<td>System Analyst</td>
+<td>GitHub Spec Kit</td>
+<td>GitHub</td>
+</tr>
+<tr>
+<td>Analysis</td>
+<td>System Analyst</td>
+<td>—</td>
+<td>GitHub, Context7</td>
+</tr>
+<tr>
+<td>Design</td>
+<td>Solution Architect</td>
+<td>AWS Architect, Platform Engineering</td>
+<td>Context7</td>
+</tr>
+<tr>
+<td>Implementation</td>
+<td>Backend Developer, Frontend Developer</td>
+<td>.NET Enterprise API, React Enterprise</td>
+<td>GitHub, Context7</td>
+</tr>
+<tr>
+<td>Testing</td>
+<td>Backend Developer, Frontend Developer</td>
+<td>—</td>
+<td>GitHub</td>
+</tr>
+<tr>
+<td>Review</td>
+<td>Security Auditor</td>
+<td>—</td>
+<td>GitHub</td>
+</tr>
+<tr>
+<td>Deployment</td>
+<td>DevOps Engineer</td>
+<td>Terraform Expert, AWS Architect</td>
+<td>GitHub, AWS, Docker</td>
+</tr>
+<tr>
+<td>Learning</td>
+<td>SpecFlow Orchestrator</td>
+<td>GitHub Spec Kit</td>
+<td>GitHub</td>
+</tr>
+</tbody>
+</table>
+<h2 id="pros-and-cons">Pros and Cons<a class="headerlink" href="#pros-and-cons" title="Permanent link">&para;</a></h2>
+<h3 id="pros">Pros<a class="headerlink" href="#pros" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Advantage</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Clear requirements before coding</strong></td>
+<td>Engineers know what to build before they start. Reduces rework from misunderstood requirements.</td>
+</tr>
+<tr>
+<td><strong>AI generates better output from specs</strong></td>
+<td>AI code generation is significantly better when it has a clear spec to work from. Vague prompts produce vague code.</td>
+</tr>
+<tr>
+<td><strong>Testable by design</strong></td>
+<td>Acceptance criteria in the spec become test cases. Every requirement has a corresponding validation.</td>
+</tr>
+<tr>
+<td><strong>Traceability</strong></td>
+<td>Every code change traces back to a spec requirement. Reviewers can verify compliance, not just code quality.</td>
+</tr>
+<tr>
+<td><strong>Better reviews</strong></td>
+<td>Reviewers check "does this match the spec?" instead of "is this code good?" — a more objective standard.</td>
+</tr>
+<tr>
+<td><strong>Reduced ambiguity</strong></td>
+<td>Writing a spec forces decisions before implementation. Ambiguity is resolved in the spec, not in code.</td>
+</tr>
+<tr>
+<td><strong>Parallel work</strong></td>
+<td>Multiple engineers can implement from the same spec without stepping on each other.</td>
+</tr>
+<tr>
+<td><strong>Knowledge preservation</strong></td>
+<td>The spec captures intent. New team members can understand why something was built, not just what.</td>
+</tr>
+<tr>
+<td><strong>AI-assisted gap analysis</strong></td>
+<td>AI can find missing scenarios, edge cases, and contradictions in a spec that humans miss.</td>
+</tr>
+<tr>
+<td><strong>Repeatable workflow</strong></td>
+<td>The same lifecycle applies to every feature. Teams develop muscle memory.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cons">Cons<a class="headerlink" href="#cons" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Disadvantage</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Upfront time investment</strong></td>
+<td>Writing a spec takes time before any code is written. For small changes, this overhead may not be worth it.</td>
+</tr>
+<tr>
+<td><strong>Spec can become stale</strong></td>
+<td>If the spec isn't updated when requirements change, it becomes a liability instead of an asset.</td>
+</tr>
+<tr>
+<td><strong>Over-specification risk</strong></td>
+<td>Too much detail in the spec can constrain implementation flexibility and slow down engineers.</td>
+</tr>
+<tr>
+<td><strong>AI can produce plausible but wrong specs</strong></td>
+<td>AI-generated specs may look complete but miss domain nuances. Human validation is essential.</td>
+</tr>
+<tr>
+<td><strong>Requires discipline</strong></td>
+<td>The team must commit to writing specs, keeping them updated, and referencing them in reviews. This is cultural, not just process.</td>
+</tr>
+<tr>
+<td><strong>Not ideal for exploration</strong></td>
+<td>When the problem is unclear (spikes, prototypes, research), a spec-driven approach adds unnecessary overhead.</td>
+</tr>
+<tr>
+<td><strong>Can feel bureaucratic</strong></td>
+<td>If the process is too rigid, developers may see it as paperwork rather than a useful tool.</td>
+</tr>
+<tr>
+<td><strong>Spec-to-code drift</strong></td>
+<td>Over time, the implementation may diverge from the spec. Without enforcement, the spec becomes fiction.</td>
+</tr>
+<tr>
+<td><strong>AI over-reliance risk</strong></td>
+<td>Teams may trust AI-generated specs or code without sufficient review, leading to subtle bugs.</td>
+</tr>
+<tr>
+<td><strong>Learning curve</strong></td>
+<td>Writing good specs is a skill. Junior team members may struggle to write useful specifications.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="when-to-use-spec-driven-development">When to Use Spec-Driven Development<a class="headerlink" href="#when-to-use-spec-driven-development" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Recommended?</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>New feature with clear requirements</td>
+<td>✅ Yes</td>
+<td>Spec captures intent before implementation</td>
+</tr>
+<tr>
+<td>Cross-service change</td>
+<td>✅ Yes</td>
+<td>Spec coordinates multiple teams</td>
+</tr>
+<tr>
+<td>Security-sensitive feature</td>
+<td>✅ Yes</td>
+<td>Spec defines security requirements upfront</td>
+</tr>
+<tr>
+<td>API design</td>
+<td>✅ Yes</td>
+<td>Spec becomes the API contract</td>
+</tr>
+<tr>
+<td>Bug fix (clear cause)</td>
+<td>⚠️ Maybe</td>
+<td>A short spec may help, but not always necessary</td>
+</tr>
+<tr>
+<td>Bug fix (unclear cause)</td>
+<td>❌ No</td>
+<td>Exploration first, spec later if needed</td>
+</tr>
+<tr>
+<td>Spike or prototype</td>
+<td>❌ No</td>
+<td>Goal is learning, not delivery</td>
+</tr>
+<tr>
+<td>Small UI tweak</td>
+<td>❌ No</td>
+<td>Overhead exceeds value</td>
+</tr>
+<tr>
+<td>Production incident</td>
+<td>❌ No</td>
+<td>Speed matters more than process</td>
+</tr>
+</tbody>
+</table>
+<h2 id="lightweight-vs-full-spec">Lightweight vs. Full Spec<a class="headerlink" href="#lightweight-vs-full-spec" title="Permanent link">&para;</a></h2>
+<p>Not every feature needs a full spec. Use this guide to choose:</p>
+<h3 id="lightweight-spec-1-2-pages">Lightweight Spec (1-2 pages)<a class="headerlink" href="#lightweight-spec-1-2-pages" title="Permanent link">&para;</a></h3>
+<p>For small features, bug fixes, or internal tools:</p>
+<div class="highlight"><pre><span></span><code><span class="gh"># Feature: &lt;name&gt;</span>
+
+<span class="gu">## What</span>
+One paragraph describing the feature.
+
+<span class="gu">## Acceptance Criteria</span>
+<span class="k">-</span><span class="w"> </span>Criterion 1
+<span class="k">-</span><span class="w"> </span>Criterion 2
+<span class="k">-</span><span class="w"> </span>Criterion 3
+
+<span class="gu">## Out of Scope</span>
+<span class="k">-</span><span class="w"> </span>What this feature does NOT do
+</code></pre></div>
+<h3 id="full-spec-3-10-pages">Full Spec (3-10 pages)<a class="headerlink" href="#full-spec-3-10-pages" title="Permanent link">&para;</a></h3>
+<p>For customer-facing features, cross-service changes, or security-sensitive work:</p>
+<div class="highlight"><pre><span></span><code><span class="gh"># Specification: &lt;name&gt;</span>
+
+<span class="gu">## Overview</span>
+<span class="gu">## User Stories</span>
+<span class="gu">## Acceptance Criteria</span>
+<span class="gu">## Business Rules</span>
+<span class="gu">## Edge Cases</span>
+<span class="gu">## Data Model</span>
+<span class="gu">## API Contract</span>
+<span class="gu">## Security Requirements</span>
+<span class="gu">## Performance Requirements</span>
+<span class="gu">## Out of Scope</span>
+<span class="gu">## Open Questions</span>
+</code></pre></div>
+<h3 id="decision-guide">Decision Guide<a class="headerlink" href="#decision-guide" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Factor</th>
+<th>Lightweight</th>
+<th>Full</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scope</td>
+<td>Single service, single team</td>
+<td>Cross-service, multiple teams</td>
+</tr>
+<tr>
+<td>Risk</td>
+<td>Low (internal tool, non-critical)</td>
+<td>High (customer-facing, security)</td>
+</tr>
+<tr>
+<td>Duration</td>
+<td>Hours to days</td>
+<td>Days to weeks</td>
+</tr>
+<tr>
+<td>Reviewers</td>
+<td>1-2 people</td>
+<td>3+ people including security</td>
+</tr>
+<tr>
+<td>AI usage</td>
+<td>Simple prompts</td>
+<td>Full lifecycle with agents</td>
+</tr>
+</tbody>
+</table>
+<h2 id="example-full-lifecycle-walkthrough">Example: Full Lifecycle Walkthrough<a class="headerlink" href="#example-full-lifecycle-walkthrough" title="Permanent link">&para;</a></h2>
+<p><strong>Feature:</strong> Bulk product import via CSV</p>
+<h3 id="spec-phase-1">Spec (Phase 1)<a class="headerlink" href="#spec-phase-1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="gh"># Bulk Product Import</span>
+
+<span class="gu">## User Story</span>
+As a product manager, I can import products from CSV so that
+catalog updates are efficient during seasonal refreshes.
+
+<span class="gu">## Acceptance Criteria</span>
+<span class="k">-</span><span class="w"> </span>Upload CSV with Name, SKU, Price, CategoryId
+<span class="k">-</span><span class="w"> </span>Duplicate SKUs rejected with error listing
+<span class="k">-</span><span class="w"> </span>Missing required column returns clear error
+<span class="k">-</span><span class="w"> </span>Products created in Draft status
+<span class="k">-</span><span class="w"> </span>Audit log entry for each import
+
+<span class="gu">## Edge Cases</span>
+<span class="k">-</span><span class="w"> </span>Empty CSV (headers only)
+<span class="k">-</span><span class="w"> </span>CSV with special characters
+<span class="k">-</span><span class="w"> </span>File &gt; 10MB rejected
+</code></pre></div>
+<h3 id="design-phase-3">Design (Phase 3)<a class="headerlink" href="#design-phase-3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="gh"># ADR: Cursor-based pagination for product listing</span>
+
+<span class="gu">## Context</span>
+Product listing returns all records. Need pagination for 10K+ products.
+
+<span class="gu">## Decision</span>
+Use cursor-based pagination (after/limit) with product ID as cursor.
+
+<span class="gu">## Consequences</span>
+<span class="k">-</span><span class="w"> </span>Better performance at high offsets
+<span class="k">-</span><span class="w"> </span>Clients cannot jump to arbitrary pages
+<span class="k">-</span><span class="w"> </span>Need OpenAPI documentation update
+</code></pre></div>
+<h3 id="test-phase-5">Test (Phase 5)<a class="headerlink" href="#test-phase-5" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="gh"># Test Plan: Bulk Import</span>
+
+<span class="gu">## Test Cases</span>
+<span class="k">1.</span> Valid CSV, 50 products → all created in Draft
+<span class="k">2.</span> Duplicate SKUs → error listing duplicates
+<span class="k">3.</span> Missing column → clear error message
+<span class="k">4.</span> Empty file → 400
+<span class="k">5.</span> File &gt; 10MB → 413
+</code></pre></div>
+<h3 id="deployment-phase-7">Deployment (Phase 7)<a class="headerlink" href="#deployment-phase-7" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="gh"># Deployment Runbook</span>
+
+<span class="gu">## Steps</span>
+<span class="k">1.</span> Apply migration 20260621_add_import_columns
+<span class="k">2.</span> Deploy to staging
+<span class="k">3.</span> Run smoke test with test CSV
+<span class="k">4.</span> Enable feature flag in production
+<span class="k">5.</span> Monitor for 30 minutes
+
+<span class="gu">## Rollback</span>
+<span class="k">1.</span> Disable feature flag
+<span class="k">2.</span> Run rollback migration if needed
+</code></pre></div>
+<h2 id="related-pages">Related Pages<a class="headerlink" href="#related-pages" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../01-governance/introduction/">Introduction</a> — operating model principles</li>
+<li><a href="../../03-agents/system-analyst/">System Analyst</a> — spec drafting agent</li>
+<li><a href="../../03-agents/solution-architect/">Solution Architect</a> — design agent</li>
+<li><a href="../../03-agents/specflow-orchestrator/">SpecFlow Orchestrator</a> — lifecycle coordination</li>
+<li><a href="../../03-agents/agent-skill-selection/">Agent and Skill Selection Guide</a> — which agent for each phase</li>
+<li><a href="../../06-reference-projects/implementation-guide/">Reference Project Implementation Guide</a> — artifact templates</li>
+<li><a href="../../02-platform-setup/aitmpl/">AITMPL</a> — task templates for each phase</li>
+<li><a href="../../02-platform-setup/claude-md/">CLAUDE.md</a> — project context for AI</li>
+</ul>
+<hr />
+<p><em>Last updated: 2026-06-21 | Version: 1.3</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "search.highlight", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
