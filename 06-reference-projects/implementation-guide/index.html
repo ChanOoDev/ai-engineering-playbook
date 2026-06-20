@@ -1,0 +1,3437 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Team AI-Driven Development Guide">
+      
+      
+        <meta name="author" content="Engineering Team">
+      
+      
+      
+        <link rel="prev" href="../../05-mcp/docker/">
+      
+      
+        <link rel="next" href="../product-management/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Implementation Guide - AI Engineering Playbook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#reference-project-implementation-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="AI Engineering Playbook" class="md-header__button md-logo" aria-label="AI Engineering Playbook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI Engineering Playbook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Implementation Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../glossary/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Glossary
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../01-governance/introduction/" class="md-tabs__link">
+          
+  
+  
+  Governance
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../02-platform-setup/claude-code/" class="md-tabs__link">
+          
+  
+  
+  Platform Setup
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../03-agents/agent-skill-selection/" class="md-tabs__link">
+          
+  
+  
+  Agents
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../04-skills/aws-architect/" class="md-tabs__link">
+          
+  
+  
+  Skills
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../05-mcp/github/" class="md-tabs__link">
+          
+  
+  
+  MCP
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  Reference Projects
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../changelog/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Changelog
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="AI Engineering Playbook" class="md-nav__button md-logo" aria-label="AI Engineering Playbook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AI Engineering Playbook
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Governance
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Governance
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-governance/introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-governance/governance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Governance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-governance/ownership-matrix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ownership Matrix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-governance/adoption-roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Adoption Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform Setup
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Platform Setup
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-platform-setup/claude-code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-platform-setup/first-ai-assisted-pr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    First AI-Assisted PR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-platform-setup/junior-developer-quickstart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Junior Developer Quick Start
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-platform-setup/git-daily-usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git Daily Usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-platform-setup/claude-md/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLAUDE.md
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-platform-setup/aitmpl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AITMPL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-platform-setup/aitmpl-installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AITMPL Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-platform-setup/mcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MCP Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-platform-setup/ci-cd-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CI/CD Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-platform-setup/ai-troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-platform-setup/user-level-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User Level Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agents
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Agents
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-agents/agent-skill-selection/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agent and Skill Selection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-agents/backend-developer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backend Developer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-agents/frontend-developer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Frontend Developer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-agents/devops-engineer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DevOps Engineer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-agents/security-auditor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security Auditor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-agents/system-analyst/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System Analyst
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-agents/solution-architect/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Solution Architect
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-agents/platform-architect/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform Architect
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-agents/specflow-orchestrator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SpecFlow Orchestrator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skills
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Skills
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-skills/aws-architect/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS Architect
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-skills/terraform-expert/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Terraform Expert
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-skills/platform-engineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform Engineering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-skills/github-spec-kit/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GitHub Spec Kit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-skills/dotnet-enterprise-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    .NET Enterprise API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-skills/react-enterprise/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    React Enterprise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MCP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    MCP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-mcp/github/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GitHub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-mcp/context7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Context7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-mcp/terraform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Terraform
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-mcp/aws/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../05-mcp/docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference Projects
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference Projects
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implementation Guide
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implementation Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Purpose
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use-this-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to Use This Guide
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delivery-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Delivery Modes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference-project-workflow-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reference Project Workflow Diagram
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementation Workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repository-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Repository Workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflow-scope-and-precedence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workflow Scope and Precedence
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agent-collaboration-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agent Collaboration Pattern
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mcp-usage-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MCP Usage Examples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sample-workflow-by-reference-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sample Workflow by Reference Project
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#definition-of-done-by-reference-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Definition of Done by Reference Project
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#required-artifacts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Required Artifacts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#artifact-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Artifact Templates
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Artifact Templates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#project-brief" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project Brief
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requirement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#architecture-decision-record" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture Decision Record
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test Plan
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Security Review
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deployment-runbook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deployment Runbook
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filled-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Filled Examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Filled Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#completed-project-brief" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Completed Project Brief
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#completed-requirement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Completed Requirement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#completed-architecture-decision-record" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Completed Architecture Decision Record
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#completed-test-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Completed Test Plan
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#completed-security-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Completed Security Review
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#completed-deployment-runbook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Completed Deployment Runbook
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#human-in-the-loop-controls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Human-in-the-Loop Controls
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#team-exercise-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Team Exercise Format
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#completion-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Completion Checklist
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../product-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Product Management
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authentication-rbac/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Authentication & RBAC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-ec2-hosted-app/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS EC2 Hosted App
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Purpose
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use-this-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to Use This Guide
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delivery-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Delivery Modes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference-project-workflow-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reference Project Workflow Diagram
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementation Workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repository-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Repository Workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflow-scope-and-precedence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Workflow Scope and Precedence
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#agent-collaboration-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agent Collaboration Pattern
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mcp-usage-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MCP Usage Examples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sample-workflow-by-reference-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sample Workflow by Reference Project
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#definition-of-done-by-reference-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Definition of Done by Reference Project
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#required-artifacts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Required Artifacts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#artifact-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Artifact Templates
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Artifact Templates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#project-brief" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Project Brief
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Requirement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#architecture-decision-record" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture Decision Record
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test Plan
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Security Review
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deployment-runbook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deployment Runbook
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filled-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Filled Examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Filled Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#completed-project-brief" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Completed Project Brief
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#completed-requirement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Completed Requirement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#completed-architecture-decision-record" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Completed Architecture Decision Record
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#completed-test-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Completed Test Plan
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#completed-security-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Completed Security Review
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#completed-deployment-runbook" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Completed Deployment Runbook
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#human-in-the-loop-controls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Human-in-the-Loop Controls
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#team-exercise-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Team Exercise Format
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#completion-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Completion Checklist
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="reference-project-implementation-guide">Reference Project Implementation Guide<a class="headerlink" href="#reference-project-implementation-guide" title="Permanent link">&para;</a></h1>
+<p>This guide explains how teams should use the reference projects as sample delivery workflows, not only as architecture examples. Each reference project can be used for onboarding, delivery rehearsal, tool validation, governance review, or as a starting point for a real implementation.</p>
+<h2 id="purpose">Purpose<a class="headerlink" href="#purpose" title="Permanent link">&para;</a></h2>
+<p>Reference projects help teams practice AI-assisted delivery in a controlled, repeatable way. They show how agents, skills, MCP integrations, human approvals, and engineering standards work together across a realistic project lifecycle.</p>
+<p>Use this guide when a team needs to:</p>
+<ul>
+<li>Learn the AI engineering workflow with a concrete example.</li>
+<li>Validate agents, skills, and MCP setup before using them on production work.</li>
+<li>Produce consistent implementation artifacts.</li>
+<li>Practice approval gates and human-in-the-loop review.</li>
+<li>Compare delivery quality across teams or tools.</li>
+</ul>
+<h2 id="how-to-use-this-guide">How to Use This Guide<a class="headerlink" href="#how-to-use-this-guide" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Choose one reference project and confirm whether the work is a training exercise or a real delivery effort.</li>
+<li>Use the implementation workflow to plan the delivery sequence and approval points.</li>
+<li>Assign human owners and AI agents using the collaboration pattern.</li>
+<li>Produce the required artifacts as the project progresses.</li>
+<li>Use the completion checklist and project-specific definition of done before closing the work.</li>
+</ol>
+<h2 id="delivery-modes">Delivery Modes<a class="headerlink" href="#delivery-modes" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>When to Use</th>
+<th>Governance Level</th>
+<th>Expected Outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Training exercise</td>
+<td>Onboarding, team enablement, tool validation, delivery rehearsal</td>
+<td>Lightweight review, sample data, limited environment access</td>
+<td>Shared understanding of the workflow and improvement actions</td>
+</tr>
+<tr>
+<td>Delivery implementation</td>
+<td>Real backlog item, customer-facing feature, production platform work</td>
+<td>Formal approval gates, traceable decisions, reviewed changes</td>
+<td>Production-ready implementation with evidence and ownership</td>
+</tr>
+</tbody>
+</table>
+<h2 id="reference-project-workflow-diagram">Reference Project Workflow Diagram<a class="headerlink" href="#reference-project-workflow-diagram" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart TD
+    brief[Project Brief] --&gt; req[Requirements and Acceptance Criteria]
+    req --&gt; model[Domain or Workflow Model]
+    model --&gt; adr[Architecture Decision Record]
+    adr --&gt; plan[Implementation Plan]
+    plan --&gt; pr[Pull Request]
+    pr --&gt; tests[Test Evidence]
+    tests --&gt; security[Security Review]
+    security --&gt; runbook[Deployment and Rollback Runbook]
+    runbook --&gt; release[Release or Exercise Completion]
+    release --&gt; retro[Retrospective and Playbook Improvements]
+
+    gate1{Scope Approved?} --&gt; req
+    brief --&gt; gate1
+    gate2{Architecture Approved?} --&gt; plan
+    adr --&gt; gate2
+    gate3{Release Approved?} --&gt; release
+    runbook --&gt; gate3</code></pre>
+<h2 id="implementation-workflow">Implementation Workflow<a class="headerlink" href="#implementation-workflow" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Inputs</th>
+<th>AI-Assisted Activities</th>
+<th>Human Responsibilities</th>
+<th>Outputs</th>
+<th>Approval Gate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Project framing</td>
+<td>Business goal, reference project page, constraints</td>
+<td>Summarize scenario, identify scope, draft assumptions</td>
+<td>Confirm business objective, scope, and constraints</td>
+<td>Project brief, assumptions log</td>
+<td>Product or engineering lead approval</td>
+</tr>
+<tr>
+<td>2. Requirements</td>
+<td>User roles, workflows, policies, examples</td>
+<td>Draft user stories, acceptance criteria, edge cases</td>
+<td>Validate business rules and priority</td>
+<td>Requirements specification, acceptance criteria</td>
+<td>Product owner approval</td>
+</tr>
+<tr>
+<td>3. Analysis</td>
+<td>Requirements, domain concepts, integrations</td>
+<td>Identify entities, states, transitions, risks</td>
+<td>Resolve ambiguous rules and integration ownership</td>
+<td>Domain model, workflow model, risk register</td>
+<td>Analyst or architect approval</td>
+</tr>
+<tr>
+<td>4. Architecture</td>
+<td>Analysis outputs, platform standards, security requirements</td>
+<td>Propose architecture, API boundaries, data model, deployment pattern</td>
+<td>Select architecture, review trade-offs, approve standards</td>
+<td>Architecture decision records, diagrams, API contracts</td>
+<td>Architecture review</td>
+</tr>
+<tr>
+<td>5. Implementation planning</td>
+<td>Architecture, backlog, team capacity</td>
+<td>Break work into tasks, map agents and skills, draft sequence</td>
+<td>Confirm sprint or iteration plan</td>
+<td>Implementation plan, task list, responsibility matrix</td>
+<td>Delivery lead approval</td>
+</tr>
+<tr>
+<td>6. Development</td>
+<td>Tasks, repository standards, coding conventions</td>
+<td>Generate code drafts, tests, documentation updates</td>
+<td>Review code, refine implementation, own final changes</td>
+<td>Application code, tests, docs</td>
+<td>Pull request review</td>
+</tr>
+<tr>
+<td>7. Verification</td>
+<td>Acceptance criteria, test strategy, security checklist</td>
+<td>Draft test cases, inspect failures, propose fixes</td>
+<td>Run tests, validate behavior, approve fixes</td>
+<td>Test results, defect log, security notes</td>
+<td>QA and security approval</td>
+</tr>
+<tr>
+<td>8. Deployment</td>
+<td>Release plan, infrastructure, environment config</td>
+<td>Draft deployment steps, rollback plan, runbook</td>
+<td>Execute or approve deployment, monitor outcome</td>
+<td>Release notes, deployment log, runbook</td>
+<td>Release approval</td>
+</tr>
+<tr>
+<td>9. Operations</td>
+<td>Monitoring data, incidents, feedback</td>
+<td>Summarize signals, suggest improvements, update docs</td>
+<td>Own operations, incidents, and prioritization</td>
+<td>Operational review, backlog updates</td>
+<td>Service owner review</td>
+</tr>
+</tbody>
+</table>
+<h2 id="repository-workflow">Repository Workflow<a class="headerlink" href="#repository-workflow" title="Permanent link">&para;</a></h2>
+<p>Use a normal engineering workflow even when AI produces a large portion of the draft content:</p>
+<ol>
+<li>Create a feature branch for the reference project implementation.</li>
+<li>Open a draft pull request early so design notes, assumptions, and generated artifacts are visible.</li>
+<li>Commit generated code and documentation in reviewable increments.</li>
+<li>Attach or link requirements, architecture notes, test evidence, and security findings to the pull request.</li>
+<li>Require human review for code, tests, infrastructure, security-sensitive behavior, and documentation.</li>
+<li>Merge only after approval gates pass and the completion checklist is satisfied.</li>
+</ol>
+<h2 id="workflow-scope-and-precedence">Workflow Scope and Precedence<a class="headerlink" href="#workflow-scope-and-precedence" title="Permanent link">&para;</a></h2>
+<p>For reference projects, define the scope of each AI component before implementation starts.</p>
+<table>
+<thead>
+<tr>
+<th>Decision</th>
+<th>Recommended Practice</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Agent scope</td>
+<td>Assign one primary agent per stage so responsibility stays clear</td>
+</tr>
+<tr>
+<td>Skill scope</td>
+<td>Use skills for technical standards, patterns, and review methods, not for business approval</td>
+</tr>
+<tr>
+<td>MCP scope</td>
+<td>Enable only the integrations needed for the stage and start with read-only access</td>
+</tr>
+<tr>
+<td>Prompt scope</td>
+<td>Keep prompts tied to the selected reference project, selected slice, and current artifact</td>
+</tr>
+<tr>
+<td>Human scope</td>
+<td>Keep final decisions, approvals, and risk acceptance with named human owners</td>
+</tr>
+</tbody>
+</table>
+<p>Use this precedence order during a reference project:</p>
+<ol>
+<li>Organization policy and project governance.</li>
+<li>Human owner direction and approval gates.</li>
+<li>Repository instructions such as <code>CLAUDE.md</code>.</li>
+<li>Reference project guide and implementation workflow.</li>
+<li>Selected agent role guidance.</li>
+<li>Selected skill guidance.</li>
+<li>MCP output and external tool context.</li>
+<li>General model knowledge.</li>
+</ol>
+<p>If an agent, skill, MCP result, or generated suggestion conflicts with the approved scope, pause and resolve the conflict with the human owner before continuing.</p>
+<h2 id="agent-collaboration-pattern">Agent Collaboration Pattern<a class="headerlink" href="#agent-collaboration-pattern" title="Permanent link">&para;</a></h2>
+<p>Use the agents as a delivery team with clear handoffs:</p>
+<table>
+<thead>
+<tr>
+<th>Agent</th>
+<th>Primary Role</th>
+<th>Typical Inputs</th>
+<th>Expected Deliverables</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Product Manager Agent</td>
+<td>Clarifies product intent and prioritization</td>
+<td>Business objective, user needs, constraints</td>
+<td>Project brief, priorities, release scope</td>
+</tr>
+<tr>
+<td>System Analyst Agent</td>
+<td>Converts business goals into precise requirements</td>
+<td>Project brief, domain examples, policies</td>
+<td>User stories, acceptance criteria, domain rules</td>
+</tr>
+<tr>
+<td>Solution Architect Agent</td>
+<td>Defines system structure and trade-offs</td>
+<td>Requirements, platform standards, non-functional requirements</td>
+<td>Architecture overview, ADRs, API and data boundaries</td>
+</tr>
+<tr>
+<td>Backend Developer Agent</td>
+<td>Implements server-side behavior</td>
+<td>API contracts, data model, coding standards</td>
+<td>APIs, services, persistence logic, backend tests</td>
+</tr>
+<tr>
+<td>Frontend Developer Agent</td>
+<td>Implements user-facing workflow</td>
+<td>UX requirements, API contracts, design standards</td>
+<td>Screens, forms, state handling, frontend tests</td>
+</tr>
+<tr>
+<td>DevOps Engineer Agent</td>
+<td>Implements delivery and operations flow</td>
+<td>Architecture, deployment target, environment rules</td>
+<td>CI/CD updates, runbook, monitoring and rollback guidance</td>
+</tr>
+<tr>
+<td>Security Auditor Agent</td>
+<td>Reviews risk and control coverage</td>
+<td>Architecture, implementation, secrets, identity model</td>
+<td>Security findings, mitigation checklist, approval notes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mcp-usage-examples">MCP Usage Examples<a class="headerlink" href="#mcp-usage-examples" title="Permanent link">&para;</a></h2>
+<p>MCP integrations should be used where they improve context, traceability, or automation. Access should follow the security guidance in the MCP setup documentation.</p>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Useful MCP</th>
+<th>Example Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Requirements</td>
+<td>GitHub MCP</td>
+<td>Read issues, inspect project backlog, link requirements to pull requests</td>
+</tr>
+<tr>
+<td>Architecture</td>
+<td>Context7 MCP</td>
+<td>Retrieve current framework or library documentation while drafting decisions</td>
+</tr>
+<tr>
+<td>Infrastructure</td>
+<td>Terraform MCP, AWS MCP</td>
+<td>Inspect modules, validate infrastructure assumptions, review cloud resources</td>
+</tr>
+<tr>
+<td>Development</td>
+<td>GitHub MCP, Context7 MCP</td>
+<td>Review repository conventions, reference APIs, prepare implementation notes</td>
+</tr>
+<tr>
+<td>Deployment</td>
+<td>GitHub MCP, AWS MCP, Kubernetes MCP</td>
+<td>Review pipeline status, deployment history, runtime configuration, release evidence</td>
+</tr>
+<tr>
+<td>Operations</td>
+<td>AWS MCP, Kubernetes MCP, monitoring-related MCPs</td>
+<td>Inspect operational state, summarize incidents, support runbook updates</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sample-workflow-by-reference-project">Sample Workflow by Reference Project<a class="headerlink" href="#sample-workflow-by-reference-project" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Reference Project</th>
+<th>Recommended Starting Point</th>
+<th>Key Workflow Focus</th>
+<th>Critical Review Areas</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Product Management</td>
+<td>Define product lifecycle, category model, pricing rules, and approval states</td>
+<td>Requirements -&gt; domain analysis -&gt; API and UI implementation</td>
+<td>Price precision, approval transitions, audit logging, downstream integration behavior</td>
+</tr>
+<tr>
+<td>Authentication &amp; RBAC</td>
+<td>Define actors, roles, permissions, identity provider assumptions, and protected actions</td>
+<td>Security model -&gt; architecture -&gt; negative testing</td>
+<td>Default-deny behavior, token validation, privilege escalation, tenant isolation, audit coverage</td>
+</tr>
+<tr>
+<td>AWS EC2 Hosted App</td>
+<td>Define workload, network exposure, deployment flow, and operational ownership</td>
+<td>Architecture -&gt; infrastructure -&gt; deployment -&gt; operations</td>
+<td>IAM scope, network access, patching, secrets, rollback, monitoring, backup and restore</td>
+</tr>
+</tbody>
+</table>
+<h2 id="definition-of-done-by-reference-project">Definition of Done by Reference Project<a class="headerlink" href="#definition-of-done-by-reference-project" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Reference Project</th>
+<th>Done Means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Product Management</td>
+<td>Product, category, pricing, and lifecycle workflows are implemented or documented; approval state transitions are tested; audit logging is captured; integration behavior is described.</td>
+</tr>
+<tr>
+<td>Authentication &amp; RBAC</td>
+<td>Authentication flow is documented; protected routes and endpoints enforce default-deny behavior; allowed and denied access tests pass; token and claim handling is reviewed.</td>
+</tr>
+<tr>
+<td>AWS EC2 Hosted App</td>
+<td>Infrastructure design is documented; deployment and rollback are tested or rehearsed; monitoring and alarms are defined; access, patching, backup, and secrets handling are reviewed.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="required-artifacts">Required Artifacts<a class="headerlink" href="#required-artifacts" title="Permanent link">&para;</a></h2>
+<p>Each reference project implementation should produce:</p>
+<ul>
+<li>Project brief.</li>
+<li>Requirements specification.</li>
+<li>Acceptance criteria.</li>
+<li>Domain or workflow model.</li>
+<li>Architecture overview.</li>
+<li>Architecture decision records for major trade-offs.</li>
+<li>API or interface contracts.</li>
+<li>Implementation task plan.</li>
+<li>Test plan and test results.</li>
+<li>Security review checklist.</li>
+<li>Deployment and rollback runbook.</li>
+<li>Operational monitoring notes.</li>
+<li>Release notes.</li>
+</ul>
+<h2 id="artifact-templates">Artifact Templates<a class="headerlink" href="#artifact-templates" title="Permanent link">&para;</a></h2>
+<p>Use lightweight templates unless the team already has standard formats.</p>
+<h3 id="project-brief">Project Brief<a class="headerlink" href="#project-brief" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="gh"># Project Brief</span>
+
+<span class="gu">## Objective</span>
+
+<span class="gu">## Scope</span>
+
+<span class="gu">## Out of Scope</span>
+
+<span class="gu">## Assumptions</span>
+
+<span class="gu">## Constraints</span>
+
+<span class="gu">## Success Criteria</span>
+</code></pre></div>
+<h3 id="requirement">Requirement<a class="headerlink" href="#requirement" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="gh"># Requirement</span>
+
+<span class="gu">## User or Actor</span>
+
+<span class="gu">## Need</span>
+
+<span class="gu">## Business Rule</span>
+
+<span class="gu">## Acceptance Criteria</span>
+
+<span class="gu">## Edge Cases</span>
+</code></pre></div>
+<h3 id="architecture-decision-record">Architecture Decision Record<a class="headerlink" href="#architecture-decision-record" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="gh"># ADR: &lt;Decision Title&gt;</span>
+
+<span class="gu">## Context</span>
+
+<span class="gu">## Decision</span>
+
+<span class="gu">## Alternatives Considered</span>
+
+<span class="gu">## Consequences</span>
+
+<span class="gu">## Review Date</span>
+</code></pre></div>
+<h3 id="test-plan">Test Plan<a class="headerlink" href="#test-plan" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="gh"># Test Plan</span>
+
+<span class="gu">## Scope</span>
+
+<span class="gu">## Test Cases</span>
+
+<span class="gu">## Negative Tests</span>
+
+<span class="gu">## Automation Coverage</span>
+
+<span class="gu">## Evidence</span>
+</code></pre></div>
+<h3 id="security-review">Security Review<a class="headerlink" href="#security-review" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="gh"># Security Review</span>
+
+<span class="gu">## Sensitive Data</span>
+
+<span class="gu">## Access Control</span>
+
+<span class="gu">## Secret Handling</span>
+
+<span class="gu">## Audit Logging</span>
+
+<span class="gu">## Findings</span>
+
+<span class="gu">## Required Mitigations</span>
+</code></pre></div>
+<h3 id="deployment-runbook">Deployment Runbook<a class="headerlink" href="#deployment-runbook" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="gh"># Deployment Runbook</span>
+
+<span class="gu">## Preconditions</span>
+
+<span class="gu">## Deployment Steps</span>
+
+<span class="gu">## Verification Steps</span>
+
+<span class="gu">## Rollback Steps</span>
+
+<span class="gu">## Owner</span>
+</code></pre></div>
+<h2 id="filled-examples">Filled Examples<a class="headerlink" href="#filled-examples" title="Permanent link">&para;</a></h2>
+<p>The templates above are starting points. Below are completed examples using the Product Management reference project as the domain. Use these as a reference when filling in your own artifacts.</p>
+<h3 id="completed-project-brief">Completed Project Brief<a class="headerlink" href="#completed-project-brief" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="gh"># Project Brief: Product Catalog Management</span>
+
+<span class="gu">## Objective</span>
+Enable product managers to create, update, and publish product records
+through a self-service web interface with approval workflows.
+
+<span class="gu">## Scope</span>
+<span class="k">-</span><span class="w"> </span>Product CRUD operations with category and pricing
+<span class="k">-</span><span class="w"> </span>Approval workflow for publishing to customer-facing catalog
+<span class="k">-</span><span class="w"> </span>Audit logging for all product changes
+
+<span class="gu">## Out of Scope</span>
+<span class="k">-</span><span class="w"> </span>Inventory management (handled by warehouse system)
+<span class="k">-</span><span class="w"> </span>Order processing (handled by order service)
+<span class="k">-</span><span class="w"> </span>Customer-facing catalog rendering (handled by storefront)
+
+<span class="gu">## Assumptions</span>
+<span class="k">-</span><span class="w"> </span>Product managers are authenticated via existing SSO
+<span class="k">-</span><span class="w"> </span>Category taxonomy is managed separately
+<span class="k">-</span><span class="w"> </span>Price changes require approval from a pricing manager
+
+<span class="gu">## Constraints</span>
+<span class="k">-</span><span class="w"> </span>Must integrate with existing product database
+<span class="k">-</span><span class="w"> </span>API must follow company REST standards
+<span class="k">-</span><span class="w"> </span>Launch deadline: end of Q3
+
+<span class="gu">## Success Criteria</span>
+<span class="k">-</span><span class="w"> </span>Product managers can create and publish products without developer help
+<span class="k">-</span><span class="w"> </span>All changes are auditable
+<span class="k">-</span><span class="w"> </span>Approval workflow reduces publishing errors by 50%
+</code></pre></div>
+<h3 id="completed-requirement">Completed Requirement<a class="headerlink" href="#completed-requirement" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="gh"># Requirement: Bulk Product Import</span>
+
+<span class="gu">## User or Actor</span>
+Product Manager (admin role)
+
+<span class="gu">## Need</span>
+Import up to 1000 products from a CSV file so that catalog updates
+are efficient during seasonal refreshes.
+
+<span class="gu">## Business Rule</span>
+<span class="k">-</span><span class="w"> </span>Each row must have: Name, SKU, Price, CategoryId
+<span class="k">-</span><span class="w"> </span>Duplicate SKUs are rejected with a clear error message
+<span class="k">-</span><span class="w"> </span>Imported products start in &quot;Draft&quot; status
+<span class="k">-</span><span class="w"> </span>Price must be positive with max 2 decimal places
+
+<span class="gu">## Acceptance Criteria</span>
+<span class="k">-</span><span class="w"> </span>Given a valid CSV with 50 products, when I upload it, then all 50
+  appear in &quot;Draft&quot; status with correct data
+<span class="k">-</span><span class="w"> </span>Given a CSV with 2 duplicate SKUs, when I upload it, then I see
+  an error listing the duplicate rows and no products are created
+<span class="k">-</span><span class="w"> </span>Given a CSV with a missing required column, when I upload it,
+  then I see a clear error explaining which column is missing
+
+<span class="gu">## Edge Cases</span>
+<span class="k">-</span><span class="w"> </span>CSV with 0 data rows (only headers)
+<span class="k">-</span><span class="w"> </span>CSV with special characters in product names
+<span class="k">-</span><span class="w"> </span>CSV file larger than 10MB (should reject with size limit message)
+</code></pre></div>
+<h3 id="completed-architecture-decision-record">Completed Architecture Decision Record<a class="headerlink" href="#completed-architecture-decision-record" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="gh"># ADR: Use Cursor-Based Pagination for Product Listing</span>
+
+<span class="gu">## Context</span>
+The product listing API currently returns all products in a single
+response. With 10,000+ products, this causes slow response times and
+memory issues. We need pagination.
+
+<span class="gu">## Decision</span>
+Use cursor-based pagination (after/limit) instead of offset pagination.
+The cursor is the last product ID from the previous page.
+
+<span class="gu">## Alternatives Considered</span>
+<span class="k">-</span><span class="w"> </span>Offset pagination (LIMIT/OFFSET): Simpler but degrades at high offsets
+  because the database must scan and skip rows
+<span class="k">-</span><span class="w"> </span>Page-number pagination: User-friendly but has the same performance
+  issue as offset at high page numbers
+
+<span class="gu">## Consequences</span>
+<span class="k">-</span><span class="w"> </span>Better performance for deep pagination
+<span class="k">-</span><span class="w"> </span>Clients cannot jump to arbitrary pages (acceptable for this use case)
+<span class="k">-</span><span class="w"> </span>Cursor must be stable (product ID is immutable, so this is safe)
+<span class="k">-</span><span class="w"> </span>Need to document the pagination contract in OpenAPI
+
+<span class="gu">## Review Date</span>
+2026-09-01 (after 3 months of production use)
+</code></pre></div>
+<h3 id="completed-test-plan">Completed Test Plan<a class="headerlink" href="#completed-test-plan" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="gh"># Test Plan: Product Bulk Import</span>
+
+<span class="gu">## Scope</span>
+Integration tests for the POST /api/products/import endpoint.
+
+<span class="gu">## Test Cases</span>
+<span class="k">1.</span> Valid CSV with 10 products → all created in Draft status
+<span class="k">2.</span> Valid CSV with 1000 products → all created, response includes count
+<span class="k">3.</span> CSV with header row only → 0 products created, success response
+<span class="k">4.</span> CSV with duplicate SKUs → error response listing duplicate rows
+<span class="k">5.</span> CSV with missing required column → error explaining which column
+<span class="k">6.</span> CSV with invalid price (negative) → error listing invalid rows
+
+<span class="gu">## Negative Tests</span>
+<span class="k">7.</span> Empty file → 400 Bad Request
+<span class="k">8.</span> File larger than 10MB → 413 Payload Too Large
+<span class="k">9.</span> Non-CSV file (e.g., .xlsx) → 415 Unsupported Media Type
+<span class="k">10.</span> Unauthenticated request → 401 Unauthorized
+
+<span class="gu">## Automation Coverage</span>
+All 10 test cases will be automated as integration tests using
+Testcontainers with a real PostgreSQL database.
+
+<span class="gu">## Evidence</span>
+Test results will be attached to the pull request as CI output.
+</code></pre></div>
+<h3 id="completed-security-review">Completed Security Review<a class="headerlink" href="#completed-security-review" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="gh"># Security Review: Product Bulk Import</span>
+
+<span class="gu">## Sensitive Data</span>
+<span class="k">-</span><span class="w"> </span>Product data is not PII or regulated
+<span class="k">-</span><span class="w"> </span>No customer data involved in import
+<span class="k">-</span><span class="w"> </span>CSV files are processed in memory, not stored on disk
+
+<span class="gu">## Access Control</span>
+<span class="k">-</span><span class="w"> </span>Only users with ProductManager role can import
+<span class="k">-</span><span class="w"> </span>Endpoint requires authenticated session
+<span class="k">-</span><span class="w"> </span>Rate limited to 5 imports per hour per user
+
+<span class="gu">## Secret Handling</span>
+<span class="k">-</span><span class="w"> </span>No secrets in CSV processing
+<span class="k">-</span><span class="w"> </span>No credentials logged during import
+<span class="k">-</span><span class="w"> </span>Database connection uses existing connection pool
+
+<span class="gu">## Audit Logging</span>
+<span class="k">-</span><span class="w"> </span>All import attempts logged (user, timestamp, row count, success/failure)
+<span class="k">-</span><span class="w"> </span>Failed imports log the reason (duplicates, validation errors)
+<span class="k">-</span><span class="w"> </span>No product data logged in audit trail
+
+<span class="gu">## Findings</span>
+<span class="k">-</span><span class="w"> </span>[LOW] Import has no idempotency key — re-uploading the same CSV
+  creates duplicate Draft products. Recommend adding an idempotency
+  header.
+
+<span class="gu">## Required Mitigations</span>
+<span class="k">-</span><span class="w"> </span>Add idempotency key support before production release
+<span class="k">-</span><span class="w"> </span>Confirm rate limiting is enforced in staging
+</code></pre></div>
+<h3 id="completed-deployment-runbook">Completed Deployment Runbook<a class="headerlink" href="#completed-deployment-runbook" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="gh"># Deployment Runbook: Product Bulk Import Feature</span>
+
+<span class="gu">## Preconditions</span>
+<span class="k">-</span><span class="w"> </span>Database migration 20260621_add_import_columns has been applied
+<span class="k">-</span><span class="w"> </span>Feature flag PRODUCT_IMPORT_ENABLED is set to false in production
+<span class="k">-</span><span class="w"> </span>Staging tests passing with all 10 test cases
+
+<span class="gu">## Deployment Steps</span>
+<span class="k">1.</span> Merge PR to main
+<span class="k">2.</span> CI builds and deploys to staging automatically
+<span class="k">3.</span> Run smoke test: POST /api/products/import with test CSV
+<span class="k">4.</span> Verify audit log entries in staging
+<span class="k">5.</span> Enable feature flag PRODUCT_IMPORT_ENABLED in production
+<span class="k">6.</span> Monitor error rates and response times for 30 minutes
+
+<span class="gu">## Verification Steps</span>
+<span class="k">1.</span> Import a test CSV in staging → confirm products created
+<span class="k">2.</span> Check audit log → confirm entries present
+<span class="k">3.</span> Verify rate limiting → 6th request returns 429
+<span class="k">4.</span> Check monitoring → no error spike after deployment
+
+<span class="gu">## Rollback Steps</span>
+<span class="k">1.</span> Disable feature flag PRODUCT_IMPORT_ENABLED
+<span class="k">2.</span> If database migration caused issues, run rollback migration
+<span class="k">3.</span> Verify previous import endpoint behavior restored
+
+<span class="gu">## Owner</span>
+DevOps Engineer (deployment), Backend Developer (feature verification)
+</code></pre></div>
+<h2 id="human-in-the-loop-controls">Human-in-the-Loop Controls<a class="headerlink" href="#human-in-the-loop-controls" title="Permanent link">&para;</a></h2>
+<p>AI may assist with drafts, analysis, code generation, test design, and documentation, but humans remain accountable for correctness, security, and delivery decisions. Apply these controls:</p>
+<ul>
+<li>Business scope is approved before implementation begins.</li>
+<li>Architecture decisions are reviewed before code generation at scale.</li>
+<li>Security-sensitive changes receive explicit security review.</li>
+<li>Infrastructure and deployment changes require environment owner approval.</li>
+<li>Generated code is treated as untrusted until reviewed and tested.</li>
+<li>Secrets are never pasted into prompts, docs, generated examples, or agent context.</li>
+<li>AI-produced documentation is reviewed for accuracy before publication.</li>
+</ul>
+<h2 id="team-exercise-format">Team Exercise Format<a class="headerlink" href="#team-exercise-format" title="Permanent link">&para;</a></h2>
+<p>A reference project can be run as a short team exercise:</p>
+<table>
+<thead>
+<tr>
+<th>Timebox</th>
+<th>Activity</th>
+<th>Outcome</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30-60 minutes</td>
+<td>Project framing and requirement discovery</td>
+<td>Shared scope and assumptions</td>
+</tr>
+<tr>
+<td>60-90 minutes</td>
+<td>Analysis and architecture</td>
+<td>Domain model, architecture approach, review questions</td>
+</tr>
+<tr>
+<td>1-2 days</td>
+<td>Implementation slice</td>
+<td>Working vertical slice with tests</td>
+</tr>
+<tr>
+<td>1 hour</td>
+<td>Security and quality review</td>
+<td>Findings, mitigations, release decision</td>
+</tr>
+<tr>
+<td>30 minutes</td>
+<td>Retrospective</td>
+<td>Improvements to prompts, agents, standards, and workflow</td>
+</tr>
+</tbody>
+</table>
+<h2 id="completion-checklist">Completion Checklist<a class="headerlink" href="#completion-checklist" title="Permanent link">&para;</a></h2>
+<p>Before considering a reference project complete, confirm that:</p>
+<ul>
+<li>Requirements and acceptance criteria are documented.</li>
+<li>Architecture choices and trade-offs are visible.</li>
+<li>Code changes are reviewed by humans.</li>
+<li>Tests cover expected and negative paths.</li>
+<li>Security and access-control concerns are reviewed.</li>
+<li>Deployment and rollback steps are documented.</li>
+<li>Operational ownership is clear.</li>
+<li>Lessons learned are added back to the playbook or team standards.</li>
+</ul>
+<hr />
+<p><em>Last updated: 2026-06-21 | Version: 1.3</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "search.highlight", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
