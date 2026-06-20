@@ -2364,6 +2364,7 @@
 <li>Review tool permissions before enabling write actions.</li>
 </ul>
 <h2 id="common-mcp-integration-patterns">Common MCP Integration Patterns<a class="headerlink" href="#common-mcp-integration-patterns" title="Permanent link">&para;</a></h2>
+<p>The table below shows common MCP integrations. Those with dedicated setup pages in this playbook are linked. Others are listed as patterns teams may adopt with appropriate review.</p>
 <table>
 <thead>
 <tr>
@@ -2371,44 +2372,58 @@
 <th>Purpose</th>
 <th>Typical Use Cases</th>
 <th>Security Considerations</th>
+<th>Setup Guide</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>GitHub MCP</td>
+<td><a href="../../05-mcp/github/">GitHub MCP</a></td>
 <td>Repository, issue, pull request, and workflow context</td>
 <td>PR summaries, issue lookup, CI failure triage</td>
 <td>Prefer read-only access; protect private issue and log content</td>
+<td><a href="../../05-mcp/github/">GitHub</a></td>
 </tr>
 <tr>
-<td>Terraform MCP</td>
+<td><a href="../../05-mcp/terraform/">Terraform MCP</a></td>
 <td>Infrastructure-as-code review and plan interpretation</td>
 <td>Plan review, module analysis, drift investigation</td>
 <td>Never auto-apply production plans; protect state and secrets</td>
+<td><a href="../../05-mcp/terraform/">Terraform</a></td>
 </tr>
 <tr>
-<td>AWS MCP</td>
+<td><a href="../../05-mcp/aws/">AWS MCP</a></td>
 <td>Cloud resource inspection and operational analysis</td>
 <td>IAM review, log summaries, inventory, cost investigation</td>
 <td>Use short-lived, least-privilege roles; separate production access</td>
+<td><a href="../../05-mcp/aws/">AWS</a></td>
+</tr>
+<tr>
+<td><a href="../../05-mcp/docker/">Docker MCP</a></td>
+<td>Container and image inspection</td>
+<td>Dockerfile review, build diagnostics, image analysis</td>
+<td>Limit host access; protect mounted volumes and env vars</td>
+<td><a href="../../05-mcp/docker/">Docker</a></td>
+</tr>
+<tr>
+<td><a href="../../05-mcp/context7/">Context7 MCP</a></td>
+<td>Library and framework documentation lookup</td>
+<td>API syntax checks, migration guidance, version-specific docs</td>
+<td>No sensitive data exposure; verify docs match project versions</td>
+<td><a href="../../05-mcp/context7/">Context7</a></td>
 </tr>
 <tr>
 <td>Kubernetes MCP</td>
 <td>Cluster and workload inspection</td>
 <td>Pod health, deployment state, event analysis, manifest review</td>
 <td>Avoid broad cluster-admin access; redact secrets and config maps</td>
+<td>Team-documented</td>
 </tr>
 <tr>
 <td>Vercel MCP</td>
 <td>Frontend deployment and project context</td>
 <td>Deployment inspection, preview status, environment review</td>
 <td>Protect environment variables and production deployment controls</td>
-</tr>
-<tr>
-<td>Supabase MCP</td>
-<td>Database and backend service context</td>
-<td>Schema inspection, migration review, auth/storage analysis</td>
-<td>Prefer read-only database access; protect service role keys and PII</td>
+<td>Team-documented</td>
 </tr>
 </tbody>
 </table>

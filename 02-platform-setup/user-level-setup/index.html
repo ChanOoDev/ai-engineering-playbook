@@ -1025,6 +1025,67 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#platform-specific-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Platform-Specific Setup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Platform-Specific Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#macos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        macOS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linux-ubuntudebian" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linux (Ubuntu/Debian)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verification-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verification Checklist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#recommended-local-workflow" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1062,6 +1123,17 @@
     <span class="md-ellipsis">
       
         Troubleshooting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#related-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Pages
       
     </span>
   </a>
@@ -2065,6 +2137,67 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#platform-specific-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Platform-Specific Setup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Platform-Specific Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#macos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        macOS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linux-ubuntudebian" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linux (Ubuntu/Debian)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Windows
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verification-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verification Checklist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#recommended-local-workflow" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2108,6 +2241,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#related-pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Related Pages
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2138,6 +2282,73 @@
 <li>Secret scanning and credential hygiene practices.</li>
 <li>Local documentation build tools when working on docs.</li>
 </ul>
+<h2 id="platform-specific-setup">Platform-Specific Setup<a class="headerlink" href="#platform-specific-setup" title="Permanent link">&para;</a></h2>
+<h3 id="macos">macOS<a class="headerlink" href="#macos" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Install Homebrew</span>
+/bin/bash<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="k">)</span><span class="s2">&quot;</span>
+
+<span class="c1"># Install Git (if not already present)</span>
+brew<span class="w"> </span>install<span class="w"> </span>git
+
+<span class="c1"># Install Node.js (for MCP servers)</span>
+brew<span class="w"> </span>install<span class="w"> </span>node
+
+<span class="c1"># Configure Git identity</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;Your Name&quot;</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;you@company.com&quot;</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>init.defaultBranch<span class="w"> </span>main
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>pull.rebase<span class="w"> </span><span class="nb">true</span>
+</code></pre></div>
+<h3 id="linux-ubuntudebian">Linux (Ubuntu/Debian)<a class="headerlink" href="#linux-ubuntudebian" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Update package manager</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>update
+
+<span class="c1"># Install Git</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>git
+
+<span class="c1"># Install Node.js</span>
+curl<span class="w"> </span>-fsSL<span class="w"> </span>https://deb.nodesource.com/setup_20.x<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>-E<span class="w"> </span>bash<span class="w"> </span>-
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nodejs
+
+<span class="c1"># Configure Git identity</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;Your Name&quot;</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;you@company.com&quot;</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>init.defaultBranch<span class="w"> </span>main
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>pull.rebase<span class="w"> </span><span class="nb">true</span>
+</code></pre></div>
+<h3 id="windows">Windows<a class="headerlink" href="#windows" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c"># Install Git (via winget or download from git-scm.com)</span>
+<span class="n">winget</span> <span class="n">install</span> <span class="n">Git</span><span class="p">.</span><span class="n">Git</span>
+
+<span class="c"># Install Node.js</span>
+<span class="n">winget</span> <span class="n">install</span> <span class="n">OpenJS</span><span class="p">.</span><span class="n">NodeJS</span><span class="p">.</span><span class="n">LTS</span>
+
+<span class="c"># Configure Git identity</span>
+<span class="n">git</span> <span class="n">config</span> <span class="p">-</span><span class="n">-global</span> <span class="n">user</span><span class="p">.</span><span class="n">name</span> <span class="s2">&quot;Your Name&quot;</span>
+<span class="n">git</span> <span class="n">config</span> <span class="p">-</span><span class="n">-global</span> <span class="n">user</span><span class="p">.</span><span class="n">email</span> <span class="s2">&quot;you@company.com&quot;</span>
+<span class="n">git</span> <span class="n">config</span> <span class="p">-</span><span class="n">-global</span> <span class="n">init</span><span class="p">.</span><span class="n">defaultBranch</span> <span class="n">main</span>
+<span class="n">git</span> <span class="n">config</span> <span class="p">-</span><span class="n">-global</span> <span class="n">pull</span><span class="p">.</span><span class="n">rebase</span> <span class="n">true</span>
+<span class="n">git</span> <span class="n">config</span> <span class="p">-</span><span class="n">-global</span> <span class="n">core</span><span class="p">.</span><span class="n">autocrlf</span> <span class="n">true</span>
+</code></pre></div>
+<p>Use Git Bash or WSL2 for the best experience with AI-assisted tools on Windows.</p>
+<h2 id="verification-checklist">Verification Checklist<a class="headerlink" href="#verification-checklist" title="Permanent link">&para;</a></h2>
+<p>After setup, verify each tool works:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Git</span>
+git<span class="w"> </span>--version<span class="w">                    </span><span class="c1"># Expected: git version 2.x</span>
+git<span class="w"> </span>config<span class="w"> </span>user.name<span class="w">             </span><span class="c1"># Expected: your name</span>
+git<span class="w"> </span>config<span class="w"> </span>user.email<span class="w">            </span><span class="c1"># Expected: your email</span>
+
+<span class="c1"># Node.js (for MCP servers)</span>
+node<span class="w"> </span>--version<span class="w">                   </span><span class="c1"># Expected: v18+ or v20+</span>
+npm<span class="w"> </span>--version<span class="w">                    </span><span class="c1"># Expected: 9+ or 10+</span>
+
+<span class="c1"># Repository access</span>
+git<span class="w"> </span>ls-remote<span class="w"> </span>origin<span class="w">             </span><span class="c1"># Expected: list of refs (not an auth error)</span>
+
+<span class="c1"># Claude Code (if installed)</span>
+claude<span class="w"> </span>--version<span class="w">                 </span><span class="c1"># Expected: version number</span>
+</code></pre></div>
+<p>If any command fails, check the error message and refer to the troubleshooting section below.</p>
 <h2 id="recommended-local-workflow">Recommended Local Workflow<a class="headerlink" href="#recommended-local-workflow" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Clone the repository using the approved remote.</li>
@@ -2149,12 +2360,60 @@
 </ol>
 <h2 id="environment-hygiene">Environment Hygiene<a class="headerlink" href="#environment-hygiene" title="Permanent link">&para;</a></h2>
 <p>Keep local environments predictable. Avoid storing secrets in shell history, prompts, screenshots, or shared transcripts. Prefer environment variables, managed secret stores, and short-lived credentials. Remove unused tokens and rotate credentials according to organizational policy.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check for secrets in shell history (examples)</span>
+<span class="nb">history</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;api_key\|password\|token\|secret&quot;</span>
+
+<span class="c1"># Remove a token from Git config</span>
+git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>--unset<span class="w"> </span>credential.helper
+
+<span class="c1"># Check environment variables for leaked tokens</span>
+env<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;token\|key\|secret&quot;</span>
+</code></pre></div>
 <h2 id="personal-configuration">Personal Configuration<a class="headerlink" href="#personal-configuration" title="Permanent link">&para;</a></h2>
 <p>Developers may customize editor settings, aliases, and local prompts, but shared project behavior should be documented in the repository. If a personal setup becomes essential for repeated team work, convert it into team documentation or automation.</p>
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <p>When a tool behaves unexpectedly, verify the working directory, branch, active virtual environment, installed dependencies, authentication state, and network access. Capture enough detail for support without exposing secrets.</p>
+<table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Git auth fails</td>
+<td><code>git config credential.helper</code>, token expiry, SSH key</td>
+</tr>
+<tr>
+<td>MCP server won't start</td>
+<td>Node.js version, npm cache, environment variables</td>
+</tr>
+<tr>
+<td>Build fails</td>
+<td>Working directory, branch, installed dependencies</td>
+</tr>
+<tr>
+<td>Claude Code can't read files</td>
+<td>Working directory, file permissions, <code>.gitignore</code></td>
+</tr>
+<tr>
+<td>Network errors</td>
+<td>VPN, proxy settings, firewall rules</td>
+</tr>
+</tbody>
+</table>
+<h2 id="related-pages">Related Pages<a class="headerlink" href="#related-pages" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../claude-code/">Claude Code</a> — the primary AI tool to set up</li>
+<li><a href="../claude-md/">CLAUDE.md</a> — project instructions for AI</li>
+<li><a href="../mcp/">MCP Setup</a> — external integrations</li>
+<li><a href="../git-daily-usage/">Git Daily Usage</a> — common Git commands</li>
+<li><a href="../ai-troubleshooting/">AI Troubleshooting</a> — when things go wrong</li>
+<li><a href="../junior-developer-quickstart/">Junior Developer Quick Start</a> — your safe first path</li>
+</ul>
 <hr />
-<p><em>Last updated: 2026-06-21 | Version: 1.1</em></p>
+<p><em>Last updated: 2026-06-21 | Version: 1.3</em></p>
 
 
 

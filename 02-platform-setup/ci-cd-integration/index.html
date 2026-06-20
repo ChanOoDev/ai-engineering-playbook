@@ -2500,6 +2500,10 @@
 <span class="w">  </span><span class="nt">pull_request</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">types</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">opened</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">synchronize</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">ready_for_review</span><span class="p p-Indicator">]</span>
 
+<span class="nt">permissions</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">pull-requests</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">write</span>
+<span class="w">  </span><span class="nt">contents</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">read</span>
+
 <span class="nt">jobs</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">ai-review</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;!github.event.pull_request.draft&#39;</span>
@@ -2514,22 +2518,47 @@
 <span class="w">        </span><span class="nt">env</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">ANTHROPIC_API_KEY</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.ANTHROPIC_API_KEY }}</span>
 <span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">          </span><span class="no"># Generate and post summary comment</span>
-<span class="w">          </span><span class="no">...</span>
+<span class="w">          </span><span class="no">DIFF=$(git diff origin/${{ github.base_ref }}...HEAD)</span>
+<span class="w">          </span><span class="no">SUMMARY=$(claude -p &quot;Summarize this PR diff for reviewers.</span>
+<span class="w">          </span><span class="no">Include: what changed, files affected, risk areas, and testing</span>
+<span class="w">          </span><span class="no">suggestions. Be concise.</span>
+
+<span class="w">          </span><span class="no">Diff:</span>
+<span class="w">          </span><span class="no">$DIFF&quot;)</span>
+<span class="w">          </span><span class="no">gh pr comment ${{ github.event.number }} --body &quot;$SUMMARY&quot;</span>
 
 <span class="w">      </span><span class="c1"># Step 2: Check for common issues</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Automated Review</span>
 <span class="w">        </span><span class="nt">env</span><span class="p">:</span>
 <span class="w">          </span><span class="nt">ANTHROPIC_API_KEY</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.ANTHROPIC_API_KEY }}</span>
 <span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">          </span><span class="no"># Run focused checks on changed files</span>
-<span class="w">          </span><span class="no">...</span>
+<span class="w">          </span><span class="no">DIFF=$(git diff origin/${{ github.base_ref }}...HEAD --name-only)</span>
+<span class="w">          </span><span class="no">REVIEW=$(claude -p &quot;Review these changed files for common issues:</span>
+<span class="w">          </span><span class="no">hardcoded secrets, missing error handling, insecure defaults,</span>
+<span class="w">          </span><span class="no">missing tests. Flag only real issues with severity.</span>
+
+<span class="w">          </span><span class="no">Files:</span>
+<span class="w">          </span><span class="no">$DIFF&quot;)</span>
+<span class="w">          </span><span class="no">echo &quot;$REVIEW&quot;</span>
 
 <span class="w">      </span><span class="c1"># Step 3: Verify governance compliance</span>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Governance Check</span>
+<span class="w">        </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">GH_TOKEN</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.GITHUB_TOKEN }}</span>
 <span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">          </span><span class="no"># Check PR description, reviewers, labels</span>
-<span class="w">          </span><span class="no">...</span>
+<span class="w">          </span><span class="no"># Check PR has description</span>
+<span class="w">          </span><span class="no">BODY=$(gh pr view ${{ github.event.number }} --json body -q &#39;.body&#39;)</span>
+<span class="w">          </span><span class="no">if [ -z &quot;$BODY&quot; ]; then</span>
+<span class="w">            </span><span class="no">echo &quot;PR requires a description per governance standards&quot;</span>
+<span class="w">            </span><span class="no">exit 1</span>
+<span class="w">          </span><span class="no">fi</span>
+
+<span class="w">          </span><span class="no"># Check reviewers assigned</span>
+<span class="w">          </span><span class="no">REVIEWERS=$(gh pr view ${{ github.event.number }} --json reviewers -q &#39;.reviewers | length&#39;)</span>
+<span class="w">          </span><span class="no">if [ &quot;$REVIEWERS&quot; -lt 1 ]; then</span>
+<span class="w">            </span><span class="no">echo &quot;PR requires at least one reviewer&quot;</span>
+<span class="w">            </span><span class="no">exit 1</span>
+<span class="w">          </span><span class="no">fi</span>
 </code></pre></div>
 <h2 id="ci-hardening-guidance">CI Hardening Guidance<a class="headerlink" href="#ci-hardening-guidance" title="Permanent link">&para;</a></h2>
 <p>AI-enabled CI jobs should be treated as automation that processes untrusted input. Pull request titles, descriptions, commit messages, diffs, test logs, and issue comments can all contain instructions that attempt to manipulate the AI system.</p>

@@ -896,6 +896,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#example-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Template
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#example-uses" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2087,6 +2098,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#example-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example Template
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#example-uses" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2163,6 +2185,50 @@
 <li><strong>Output format</strong> - the expected structure of the response or artifact.</li>
 <li><strong>Validation</strong> - checks the user or AI should perform before accepting the result.</li>
 </ul>
+<h2 id="example-template">Example Template<a class="headerlink" href="#example-template" title="Permanent link">&para;</a></h2>
+<p>Here is a complete template for reviewing a pull request:</p>
+<div class="highlight"><pre><span></span><code><span class="gh"># PR Review Template</span>
+
+<span class="gu">## Purpose</span>
+Review a pull request for correctness, security, and maintainability.
+
+<span class="gu">## Inputs</span>
+<span class="k">-</span><span class="w"> </span>PR diff or link
+<span class="k">-</span><span class="w"> </span>Related issue or user story
+<span class="k">-</span><span class="w"> </span>CLAUDE.md or project conventions
+
+<span class="gu">## Context</span>
+This is a backend API service using .NET 8, EF Core, and PostgreSQL.
+All endpoints require authentication unless explicitly marked otherwise.
+
+<span class="gu">## Instructions</span>
+<span class="k">1.</span> Read the diff and identify what changed.
+<span class="k">2.</span> Check each change against the review focus areas below.
+<span class="k">3.</span> For each finding, provide: file, line, severity, description, suggestion.
+<span class="k">4.</span> Summarize the overall risk level and whether the PR is safe to merge.
+
+<span class="gu">## Constraints</span>
+<span class="k">-</span><span class="w"> </span>Do not suggest changes outside the PR scope.
+<span class="k">-</span><span class="w"> </span>Do not approve security-sensitive changes without flagging them.
+<span class="k">-</span><span class="w"> </span>Do not modify files — only report findings.
+
+<span class="gu">## Output Format</span>
+<span class="gu">### Summary</span>
+One paragraph: what the PR does and overall risk level.
+
+<span class="gu">### Findings</span>
+| File | Line | Severity | Issue | Suggestion |
+|------|------|----------|-------|------------|
+| ... | ... | critical/warning/suggestion | ... | ... |
+
+<span class="gu">### Verdict</span>
+Safe to merge / Needs changes / Needs security review
+
+<span class="gu">## Validation</span>
+<span class="k">-</span><span class="w"> </span>Verify findings are specific (file + line, not vague)
+<span class="k">-</span><span class="w"> </span>Verify severity is realistic (not everything is &quot;critical&quot;)
+<span class="k">-</span><span class="w"> </span>Verify suggestions are actionable
+</code></pre></div>
 <h2 id="example-uses">Example Uses<a class="headerlink" href="#example-uses" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Generate an implementation plan from a product requirement.</li>

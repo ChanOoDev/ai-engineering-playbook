@@ -1456,6 +1456,78 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#find-a-bug-with-bisect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Find a Bug with Bisect
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ignoring-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ignoring Files
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ignoring Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gitignore-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        .gitignore Basics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-whats-ignored" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check What's Ignored
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remove-a-file-from-tracking-keep-locally" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Remove a File from Tracking (Keep Locally)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-ignore" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Global Ignore
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3464,6 +3536,78 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#find-a-bug-with-bisect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Find a Bug with Bisect
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ignoring-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ignoring Files
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ignoring Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gitignore-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        .gitignore Basics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-whats-ignored" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Check What's Ignored
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remove-a-file-from-tracking-keep-locally" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Remove a File from Tracking (Keep Locally)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-ignore" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Global Ignore
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3994,6 +4138,44 @@ git<span class="w"> </span>grep<span class="w"> </span>-n<span class="w"> </span
 git<span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;pattern&quot;</span><span class="w"> </span>--<span class="w"> </span><span class="s1">&#39;*.js&#39;</span><span class="w">       </span><span class="c1"># search specific file types</span>
 git<span class="w"> </span>log<span class="w"> </span>-S<span class="w"> </span><span class="s2">&quot;functionName&quot;</span><span class="w">          </span><span class="c1"># find commits that added/removed a string</span>
 git<span class="w"> </span>log<span class="w"> </span>-G<span class="w"> </span><span class="s2">&quot;regex&quot;</span><span class="w">                 </span><span class="c1"># find commits matching a regex</span>
+</code></pre></div>
+<h3 id="find-a-bug-with-bisect">Find a Bug with Bisect<a class="headerlink" href="#find-a-bug-with-bisect" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>bisect<span class="w"> </span>start<span class="w">                   </span><span class="c1"># start bisect session</span>
+git<span class="w"> </span>bisect<span class="w"> </span>bad<span class="w">                     </span><span class="c1"># mark current commit as bad</span>
+git<span class="w"> </span>bisect<span class="w"> </span>good<span class="w"> </span>&lt;commit-hash&gt;<span class="w">      </span><span class="c1"># mark a known good commit</span>
+<span class="c1"># Git checks out a middle commit — test it, then mark:</span>
+git<span class="w"> </span>bisect<span class="w"> </span>good<span class="w">                    </span><span class="c1"># if this commit works</span>
+git<span class="w"> </span>bisect<span class="w"> </span>bad<span class="w">                     </span><span class="c1"># if this commit is broken</span>
+<span class="c1"># Repeat until Git finds the first bad commit</span>
+git<span class="w"> </span>bisect<span class="w"> </span>reset<span class="w">                   </span><span class="c1"># end bisect session</span>
+</code></pre></div>
+<p>Automate with a test command:</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>bisect<span class="w"> </span>start<span class="w"> </span>HEAD<span class="w"> </span>&lt;good-commit&gt;
+git<span class="w"> </span>bisect<span class="w"> </span>run<span class="w"> </span>npm<span class="w"> </span><span class="nb">test</span><span class="w">            </span><span class="c1"># automatically runs test on each commit</span>
+git<span class="w"> </span>bisect<span class="w"> </span>reset
+</code></pre></div>
+<h2 id="ignoring-files">Ignoring Files<a class="headerlink" href="#ignoring-files" title="Permanent link">&para;</a></h2>
+<h3 id="gitignore-basics">.gitignore Basics<a class="headerlink" href="#gitignore-basics" title="Permanent link">&para;</a></h3>
+<p>Create a <code>.gitignore</code> file in the repository root to exclude files from tracking:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Common patterns</span>
+node_modules/<span class="w">          </span><span class="c1"># dependencies</span>
+*.log<span class="w">                  </span><span class="c1"># log files</span>
+.env<span class="w">                   </span><span class="c1"># environment variables</span>
+dist/<span class="w">                  </span><span class="c1"># build output</span>
+__pycache__/<span class="w">           </span><span class="c1"># Python bytecode</span>
+.vscode/<span class="w">               </span><span class="c1"># editor settings</span>
+.DS_Store<span class="w">              </span><span class="c1"># macOS metadata</span>
+</code></pre></div>
+<h3 id="check-whats-ignored">Check What's Ignored<a class="headerlink" href="#check-whats-ignored" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>status<span class="w"> </span>--ignored<span class="w">               </span><span class="c1"># show ignored files</span>
+git<span class="w"> </span>check-ignore<span class="w"> </span>-v<span class="w"> </span>&lt;file&gt;<span class="w">         </span><span class="c1"># check why a file is ignored</span>
+</code></pre></div>
+<h3 id="remove-a-file-from-tracking-keep-locally">Remove a File from Tracking (Keep Locally)<a class="headerlink" href="#remove-a-file-from-tracking-keep-locally" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>rm<span class="w"> </span>--cached<span class="w"> </span>&lt;file&gt;<span class="w">             </span><span class="c1"># untrack but keep on disk</span>
+git<span class="w"> </span>rm<span class="w"> </span>-r<span class="w"> </span>--cached<span class="w"> </span>&lt;folder&gt;<span class="w">        </span><span class="c1"># untrack folder</span>
+</code></pre></div>
+<h3 id="global-ignore">Global Ignore<a class="headerlink" href="#global-ignore" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>core.excludesfile<span class="w"> </span>~/.gitignore_global
 </code></pre></div>
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
 <h3 id="useful-aliases">Useful Aliases<a class="headerlink" href="#useful-aliases" title="Permanent link">&para;</a></h3>
