@@ -2,6 +2,26 @@
 
 All notable changes to the AI Engineering Playbook are documented here. The playbook follows [Semantic Versioning](https://semver.org/).
 
+## [1.4.0] - 2026-06-21
+
+### Added
+
+- **Spec-Driven SDLC** (`07-spec-driven-sdlc/spec-driven-sdlc.md`) — full specification-driven software development lifecycle with AI assist. Covers 8 phases (Specify, Analyze, Design, Implement, Test, Review, Deploy, Learn), Mermaid diagrams, agent mapping, 10 pros and 10 cons, when-to-use guide, lightweight vs full spec decision matrix, and a full walkthrough example.
+- **Configuration Reference** (`02-platform-setup/configuration-reference.md`) — unified reference for all components (CLAUDE.md, agents, skills, MCPs, commands, hooks, settings) across all 4 configuration levels (user, project, directory, task/session). Includes precedence rules, decision matrix, and setup checklists.
+
+### Changed
+
+- Fixed MCP Setup patterns table — added Setup Guide column linking to dedicated pages, marked Kubernetes/Vercel as team-documented.
+- Fixed Implementation Guide — replaced Kubernetes MCP references with Docker MCP.
+- Fixed Terraform/AWS MCP — updated example config packages to correct package names with registry links.
+- Fixed CI/CD Integration — replaced placeholder `...` in Full Pipeline example with real working steps.
+- Expanded User Level Setup — added macOS/Linux/Windows setup commands, verification checklist, environment hygiene commands, troubleshooting table, and cross-links.
+- Fixed SpecFlow Orchestrator — added clarifying note that the name refers to specification-driven delivery, not the BDD framework.
+- Added glossary terms: CI/CD, IAM, PR.
+- Added git bisect and .gitignore sections to Git Daily Usage.
+- Added inline template example to AITMPL page.
+- Added cross-links to all three reference project pages linking agent/skill names to their dedicated pages.
+
 ## [1.3.0] - 2026-06-21
 
 ### Added
@@ -63,4 +83,4 @@ All notable changes to the AI Engineering Playbook are documented here. The play
 - Governance framework with introduction, policies, ownership matrix, and adoption roadmap.
 
 ---
-*Last updated: 2026-06-21 | Version: 1.3*
+*Last updated: 2026-06-21 | Version: 1.4*
