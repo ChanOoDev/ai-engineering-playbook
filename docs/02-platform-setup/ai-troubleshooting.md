@@ -10,10 +10,15 @@ This page covers common problems junior developers encounter when using AI-assis
 
 **How to fix:**
 
-1. Revert the changes: `git checkout -- .` or `git restore .`
-2. Add explicit scope to your prompt: "Only modify files in src/Services/Orders/"
-3. Re-run with the narrower prompt
-4. Review the diff before committing — every file should be explainable
+1. First, review what changed: `git diff` or `git diff --stat`
+2. If you have other uncommitted work you want to keep, stash it: `git stash`
+3. Revert only the AI changes: `git restore .` (discards all uncommitted changes)
+4. If you stashed work, restore it: `git stash pop`
+5. Add explicit scope to your prompt: "Only modify files in src/Services/Orders/"
+6. Re-run with the narrower prompt
+7. Review the diff before committing — every file should be explainable
+
+**Warning:** `git restore .` discards ALL uncommitted changes, not just AI-generated ones. Always check `git status` and `git diff` first to make sure you won't lose work you care about.
 
 **Prevention:** Always tell AI what NOT to change. Example: "Do not modify test files, configuration, or unrelated services."
 

@@ -30,19 +30,29 @@ All notable changes to the AI Engineering Playbook are documented here. The play
 
 ### Changed
 
+- Expanded User Level Setup — added macOS/Linux/Windows setup commands, Claude Code install, verification checklist, environment hygiene commands, troubleshooting table, and cross-links.
+- Expanded Adoption Roadmap with per-stage metrics tables.
+- Added cross-references between related agents and skills.
+- Added cross-links to all three reference project pages linking agent/skill names to their dedicated pages.
+- Added inline template example to AITMPL page.
+- Updated home page reading path to include first PR workflow, agent/skill selection, and reference project implementation guide.
+- Added MCP config example and validation commands to MCP Setup page.
+- Added install commands and CLAUDE.md cross-link to Claude Code page.
+- Added severity rubric (critical/high/medium/low) to Security Auditor agent.
+- Added multi-framework example prompts (Python/FastAPI, Node/Express) to Backend Developer agent.
+- Replaced SpecFlow Orchestrator BDD-focused references with orchestration-relevant references.
+- Added glossary terms: Deployment, RBAC, SDLC, User Story.
+
+### Fixed
+
 - Fixed MCP Setup patterns table — added Setup Guide column linking to dedicated pages, marked Kubernetes/Vercel as team-documented.
 - Fixed Implementation Guide — replaced Kubernetes MCP references with Docker MCP.
 - Fixed Terraform/AWS MCP — updated example config packages to correct package names with registry links.
 - Fixed CI/CD Integration — replaced placeholder `...` in Full Pipeline example with real working steps.
-- Expanded User Level Setup — added macOS/Linux/Windows setup commands, verification checklist, environment hygiene commands, troubleshooting table, and cross-links.
 - Fixed SpecFlow Orchestrator — added clarifying note that the name refers to specification-driven delivery, not the BDD framework.
-- Added cross-links to all three reference project pages linking agent/skill names to their dedicated pages.
-- Added inline template example to AITMPL page.
 - Fixed markdown spacing after Mermaid blocks in `first-ai-assisted-pr.md`, `implementation-guide.md`, `mcp.md`, and `agent-skill-selection.md`.
-- Updated home page reading path to include first PR workflow, agent/skill selection, and reference project implementation guide.
-- Expanded Adoption Roadmap with per-stage metrics tables.
-- Added cross-references between related agents and skills.
 - Fixed GitHub Pages deployment workflow — switched to peaceiris/actions-gh-pages@v4 with explicit permissions.
+- Fixed AI Troubleshooting — safer advice for reverting AI changes (check diff first, stash if needed).
 
 ## [1.0.0] - 2026-06-01
 

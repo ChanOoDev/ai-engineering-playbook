@@ -82,6 +82,59 @@ Most teams should manage MCP configuration through approved developer environmen
 - Maintain examples for common operating systems.
 - Review tool permissions before enabling write actions.
 
+### Example Configuration (Claude Code)
+
+MCP servers are configured in `.claude/config.json` at the project or user level:
+
+```json
+{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}"
+      }
+    },
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp"]
+    }
+  }
+}
+```
+
+**Where to place it:**
+- **Project level:** `.claude/config.json` — committed to repo, shared with team
+- **User level:** `~/.claude/config.json` — personal, not committed
+
+### Validation Commands
+
+After configuring an MCP server, verify it works:
+
+```bash
+# 1. Verify the server starts without errors
+claude --print-config    # Shows loaded MCP servers
+
+# 2. Test a read-only operation
+# For GitHub MCP:
+claude -p "List my recent PRs using GitHub MCP"
+
+# For Context7 MCP:
+claude -p "Look up the React Query v5 useQuery API using Context7"
+
+# 3. Verify error handling
+# Try accessing a resource you don't have permission for
+claude -p "Read the private repo org/secret-repo using GitHub MCP"
+# Expected: clear permission error, not a crash
+```
+
+If the server fails to start, check:
+- Node.js version (`node --version` — need v18+)
+- npm cache (`npm cache clean --force`)
+- Environment variables are set correctly
+- Network access (VPN, firewall)
+
 ## Common MCP Integration Patterns
 
 The table below shows common MCP integrations. Those with dedicated setup pages in this playbook are linked. Others are listed as patterns teams may adopt with appropriate review.

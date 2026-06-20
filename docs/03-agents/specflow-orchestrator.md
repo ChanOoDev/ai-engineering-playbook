@@ -52,19 +52,19 @@ Review whether the orchestration keeps the work scoped, names dependencies clear
 
 ## External References
 
-- [Cucumber Documentation](https://cucumber.io/docs/cucumber/)
-- [Gherkin Reference](https://cucumber.io/docs/gherkin/reference/)
-- [Reqnroll Documentation](https://docs.reqnroll.net/)
 - [GitHub Projects Documentation](https://docs.github.com/issues/planning-and-tracking-with-projects)
 - [Agile Alliance Acceptance Criteria](https://www.agilealliance.org/glossary/acceptance-criteria/)
+- [Team Topologies](https://teamtopologies.com/)
+- [DORA Metrics](https://dora.dev/)
+- [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
 
 ## Third-Party Repositories
 
-- [cucumber/cucumber-js](https://github.com/cucumber/cucumber-js)
-- [cucumber/gherkin](https://github.com/cucumber/gherkin)
-- [reqnroll/Reqnroll](https://github.com/reqnroll/Reqnroll)
-- [SpecFlowOSS/SpecFlow](https://github.com/SpecFlowOSS/SpecFlow)
-- [microsoft/playwright](https://github.com/microsoft/playwright)
+- [github/github-mcp-server](https://github.com/github/github-mcp-server)
+- [backstage/backstage](https://github.com/backstage/backstage)
+- [argoproj/argo-cd](https://github.com/argoproj/argo-cd)
+- [grafana/grafana](https://github.com/grafana/grafana)
+- [opentofu/opentofu](https://github.com/opentofu/opentofu)
 
 ---
 *Last updated: 2026-06-21 | Version: 1.1*

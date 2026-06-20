@@ -1,7 +1,7 @@
 # Backend Developer
 
 !!! info "Agent Type: **Role**"
-    This agent represents an engineering persona with responsibilities, review focus, and collaboration patterns. Use it when you need a server-side perspective on implementation work. For the technical capability this agent draws on, see the [.NET Enterprise API](../04-skills/dotnet-enterprise-api.md) skill.
+    This agent represents an engineering persona with responsibilities, review focus, and collaboration patterns. Use it when you need a server-side perspective on implementation work. For technical capabilities, this agent draws on skills like [.NET Enterprise API](../04-skills/dotnet-enterprise-api.md) (for .NET projects), or applies equivalent patterns for other stacks (Spring Boot, FastAPI, Django, Express).
 
 The Backend Developer agent supports server-side implementation, API design, data access, integration logic, and automated testing. It helps turn clear requirements into maintainable service behavior while following the repository's architecture and coding standards.
 
@@ -77,6 +77,37 @@ Review this PR diff for backend concerns. Focus on:
 - Missing tests or edge cases
 
 Flag issues with severity (critical/warning/suggestion) and explain why.
+```
+
+**Implementing an endpoint (Python/FastAPI):**
+
+```
+Implement a POST /api/products endpoint in this FastAPI project.
+
+Requirements:
+- Accept JSON body with name, sku, price, category_id
+- Validate: name required, sku unique, price positive
+- Return 201 with the created product
+- Return 422 with structured errors for validation failures
+- Follow existing patterns in app/routers/products.py
+- Add tests in tests/test_products.py
+
+Run with: pytest tests/test_products.py -v
+```
+
+**Implementing an endpoint (Node/Express):**
+
+```
+Add a GET /api/orders/:id endpoint to this Express API.
+
+Requirements:
+- Look up order by ID, return 404 if not found
+- Include order items and totals in response
+- Require authentication (use existing auth middleware)
+- Follow patterns in src/routes/orders.js
+- Add tests using the existing supertest setup
+
+Run with: npm test -- --grep "orders"
 ```
 
 ## Good vs. Bad Usage

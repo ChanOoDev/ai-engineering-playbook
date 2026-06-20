@@ -31,14 +31,48 @@ Evaluate AI IDEs using consistent criteria:
 | Enterprise controls | SSO, audit logs, policy management, network controls, and admin visibility |
 
 Use the same governance principles regardless of IDE. The tool may change, but review, traceability, and human accountability do not.
+## Installation
+
+```bash
+# Install via npm (requires Node.js 18+)
+npm install -g @anthropic-ai/claude-code
+
+# Verify installation
+claude --version
+
+# Authenticate
+claude auth login
+
+# Start a session in your project directory
+cd /path/to/your/project
+claude
+```
+
+For detailed setup, see the [Claude Code documentation](https://docs.anthropic.com/en/docs/claude-code).
+
+## Project Configuration
+
+Claude Code reads `CLAUDE.md` files automatically for project-specific context. See [CLAUDE.md](claude-md.md) for how to write project instructions that Claude Code follows.
+
+```bash
+# Check if your project has CLAUDE.md
+ls CLAUDE.md
+
+# If not, create one (see CLAUDE.md page for templates)
+touch CLAUDE.md
+```
+
+Claude Code also reads configuration from `.claude/` for agents, skills, MCP servers, and settings. See [Configuration Reference](configuration-reference.md) for the full hierarchy.
+
 ## Setup Checklist
 
-1. Install the approved Claude Code client for your environment.
-2. Authenticate using the organization-approved identity provider or account policy.
+1. Install Claude Code: `npm install -g @anthropic-ai/claude-code`
+2. Authenticate: `claude auth login`
 3. Confirm repository access and local filesystem permissions.
-4. Configure any required MCP servers through the approved configuration path.
-5. Validate that the tool can read the target repository and run basic non-destructive commands.
-6. Review data handling guidance before pasting sensitive material into a session.
+4. Verify `CLAUDE.md` exists in the project root (create one if not — see [CLAUDE.md](claude-md.md)).
+5. Configure any required MCP servers (see [MCP Setup](mcp.md)).
+6. Validate: `claude -p "Read the README and summarize this project"`
+7. Review data handling guidance before pasting sensitive material into a session.
 
 ## Working Pattern
 
@@ -54,6 +88,28 @@ A strong Claude Code workflow usually follows this sequence:
 ## Guardrails
 
 Do not use Claude Code to bypass code review, approve production changes, expose secrets, or perform destructive actions without explicit confirmation. Treat generated output as a draft until it is validated by tests, reviews, and accountable owners.
+
+**Hard boundaries:**
+
+- Never paste secrets, credentials, or customer data into a session
+- Never use Claude Code to approve your own PRs
+- Never run destructive commands (`rm -rf`, `DROP TABLE`, `git push --force`) without human confirmation
+- Never commit generated code you cannot explain to a reviewer
+- Never use MCP write access unless explicitly approved by your team
+
+**Permission modes:**
+
+Claude Code has different permission levels for file edits and command execution. Use the most restrictive mode appropriate for the task:
+
+| Mode | File Edits | Commands | Use When |
+|------|-----------|----------|----------|
+| Plan mode | Read only | Read only | Exploration, analysis, review |
+| Auto-accept edits | Write allowed | Read only | Implementation with manual command control |
+| Full auto | Write allowed | Write allowed | Trusted automation (use sparingly) |
+
+Default to plan mode for exploration. Escalate to auto-accept only when you trust the scope. Avoid full auto for production work.
+
+See [Governance](../01-governance/governance.md) for the full review and approval requirements.
 
 ## Troubleshooting
 

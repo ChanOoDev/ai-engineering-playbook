@@ -22,6 +22,8 @@ This glossary defines the operating terms used throughout the AI Engineering Pla
 
 **Default-Deny** — A security pattern where all access is blocked unless explicitly granted. Used in authorization design: users cannot perform an action unless a policy specifically allows it.
 
+**Deployment** — The process of releasing code changes to a production environment. AI-assisted workflows should always include a documented deployment procedure with rollback steps. See [Reference Project Implementation Guide](06-reference-projects/implementation-guide.md).
+
 ## G
 
 **Golden Path** — A recommended, well-supported way to accomplish a common engineering task. Platform teams build golden paths so developers don't have to solve the same problems repeatedly. Similar to "paved road."
@@ -56,6 +58,8 @@ This glossary defines the operating terms used throughout the AI Engineering Pla
 
 ## R
 
+**RBAC (Role-Based Access Control)** — An authorization model where permissions are assigned to roles rather than individual users. Users are assigned roles, and the roles determine what they can access. Common in enterprise applications and cloud IAM. See [Authentication & RBAC](06-reference-projects/authentication-rbac.md).
+
 **Rollback** — Reverting a change to the previous known-good state. Every deployment should have a documented rollback procedure.
 
 **Runbook** — Step-by-step operational instructions for a procedure such as deployment, incident response, or system recovery. See [Reference Project Implementation Guide](06-reference-projects/implementation-guide.md).
@@ -64,11 +68,17 @@ This glossary defines the operating terms used throughout the AI Engineering Pla
 
 **Scope** — The boundaries of what a task, agent, or change should affect. Narrow scope reduces risk. When asking AI for help, always define what should and should not be changed.
 
+**SDLC (Software Development Lifecycle)** — The stages software goes through from idea to production: requirements, design, implementation, testing, deployment, and operations. The playbook defines a spec-driven SDLC with AI assist at every stage. See [Spec-Driven SDLC](07-spec-driven-sdlc/spec-driven-sdlc.md).
+
 **Skill** — A reusable technical capability that an agent may invoke. Skills represent domain expertise (like .NET Enterprise API or AWS Architect) rather than delivery roles. See [Skills](04-skills/aws-architect.md).
 
 ## T
 
 **Traceability** — The ability to follow a change from its origin (requirement or user story) through implementation, testing, review, and deployment. Good traceability means every change has a clear "why" and "who approved it."
+
+## U
+
+**User Story** — A short description of a feature from the user's perspective, typically in the format: "As a [role], I can [action] so that [benefit]." User stories are the starting point for spec-driven development and become acceptance criteria for testing.
 
 ## V
 

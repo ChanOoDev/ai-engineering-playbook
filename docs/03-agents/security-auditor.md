@@ -44,6 +44,23 @@ file and line, explanation of the risk, and a specific mitigation suggestion.
 
 The Security Auditor should avoid vague warnings. Findings should be specific, reproducible where possible, and tied to realistic impact. A good security review helps the team fix the issue without losing delivery momentum.
 
+## Severity Definitions
+
+Use these severity levels consistently in all security findings:
+
+| Severity | Definition | Example | Action |
+|----------|-----------|---------|--------|
+| **Critical** | Immediate exploitation risk, data breach, or system compromise | SQL injection, hardcoded production credentials, unauthenticated admin endpoint | Block merge. Fix before any deployment. |
+| **High** | Exploitable vulnerability with significant impact | Missing auth on sensitive endpoint, XSS in user-facing input, overly broad IAM policy | Block merge. Fix before release. |
+| **Medium** | Security weakness that requires specific conditions to exploit | Missing rate limiting, verbose error messages, outdated dependency with known CVE | Fix in current sprint. May ship with mitigation. |
+| **Low** | Minor improvement, defense-in-depth, or hardening opportunity | Missing security headers, non-HTTPS links in docs, unused permissions | Fix when convenient. Track in backlog. |
+
+**Guidelines:**
+- Default to the lower severity when in doubt — don't cry wolf
+- Always explain *why* the finding matters, not just *what* is wrong
+- Provide a specific mitigation, not just "fix this"
+- Include the affected file and line number
+
 ## External References
 
 - [OWASP Top 10](https://owasp.org/www-project-top-ten/)

@@ -33,6 +33,10 @@ git config --global user.name "Your Name"
 git config --global user.email "you@company.com"
 git config --global init.defaultBranch main
 git config --global pull.rebase true
+
+# Install Claude Code
+npm install -g @anthropic-ai/claude-code
+claude auth login
 ```
 
 ### Linux (Ubuntu/Debian)
@@ -53,6 +57,10 @@ git config --global user.name "Your Name"
 git config --global user.email "you@company.com"
 git config --global init.defaultBranch main
 git config --global pull.rebase true
+
+# Install Claude Code
+npm install -g @anthropic-ai/claude-code
+claude auth login
 ```
 
 ### Windows
@@ -70,6 +78,10 @@ git config --global user.email "you@company.com"
 git config --global init.defaultBranch main
 git config --global pull.rebase true
 git config --global core.autocrlf true
+
+# Install Claude Code
+npm install -g @anthropic-ai/claude-code
+claude auth login
 ```
 
 Use Git Bash or WSL2 for the best experience with AI-assisted tools on Windows.
@@ -84,9 +96,13 @@ git --version                    # Expected: git version 2.x
 git config user.name             # Expected: your name
 git config user.email            # Expected: your email
 
-# Node.js (for MCP servers)
+# Node.js (for MCP servers and Claude Code)
 node --version                   # Expected: v18+ or v20+
 npm --version                    # Expected: 9+ or 10+
+
+# Claude Code
+claude --version                 # Expected: version number
+claude auth status               # Expected: authenticated
 
 # Repository access
 git ls-remote origin             # Expected: list of refs (not an auth error)
