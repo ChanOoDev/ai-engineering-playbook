@@ -29,6 +29,34 @@ Useful documentation includes domain glossary, user workflow, API reference, dat
 
 Review data validation, duplicate product handling, price precision, audit trails, approval state transitions, and integration failure behavior. Product data often feeds customer-facing or revenue-impacting systems, so traceability matters.
 
+## First Implementation Slice
+
+Start with a narrow vertical slice: create a product record with category, price, lifecycle status, validation, and audit logging.
+
+### Sample Backlog
+
+| Item | Outcome |
+| --- | --- |
+| Define product fields and lifecycle states | Shared domain model and glossary |
+| Create product API | Validated endpoint for product creation |
+| Add product list view | Product managers can inspect created records |
+| Capture audit event | Product creation is traceable |
+| Add tests | Happy path, validation errors, duplicate SKU, invalid category |
+
+### Acceptance Criteria
+
+- A user with create permission can create a product with required fields.
+- Invalid price, missing SKU, or inactive category is rejected with clear errors.
+- A duplicate SKU cannot be created.
+- Product status starts in the agreed initial state.
+- The change writes an audit record with actor, timestamp, and product ID.
+
+### Review Checklist
+
+- Validate price precision and currency assumptions.
+- Confirm role-based access control for create and update actions.
+- Confirm audit logging is durable and searchable.
+- Confirm downstream integrations are not triggered until publishing is approved.
 ## Extension Ideas
 
 Teams can extend this project with bulk import, product versioning, approval notifications, catalog publishing, analytics dashboards, or integration with master data management systems.

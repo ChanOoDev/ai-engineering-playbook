@@ -2,6 +2,18 @@
 
 AI engineering adoption should progress through deliberate stages. The roadmap below helps teams move from experimentation to reliable, governed delivery.
 
+## Adoption Tracks
+
+Adoption should progress at three levels at the same time:
+
+| Track | Focus | Enablement Needed | Success Signal |
+| --- | --- | --- | --- |
+| Individual adoption | Help engineers use approved tools safely and effectively | Tool setup, prompting basics, data handling rules, review expectations | Developers can complete low-risk AI-assisted tasks without platform support |
+| Team adoption | Standardize workflows across a delivery team | CLAUDE.md, shared templates, agent roles, PR conventions, support channel | Team uses repeatable AI-assisted workflows with consistent review quality |
+| Organization adoption | Govern and scale AI engineering as an operating capability | Approved tool catalog, metrics, security controls, training, audit process | AI usage is measurable, compliant, and integrated into delivery governance |
+
+Teams should not wait for every organization-level control before learning. Start with low-risk individual and team workflows, then promote successful patterns into organization standards.
+
 ## Stage 1: Foundation
 
 Establish basic readiness before broad rollout. Define approved tools, publish data handling guidance, identify pilot teams, create starter documentation, and agree on review expectations.
@@ -92,10 +104,10 @@ Use these thresholds to decide when to move between stages:
 
 | Transition | Criteria |
 |---|---|
-| Stage 1 → 2 | Governance approved, pilot teams identified, tools documented |
-| Stage 2 → 3 | Pilot metrics meet targets for 4+ weeks, no security incidents |
-| Stage 3 → 4 | >50% of teams onboarded, shared workflows adopted, CI checks active |
-| Stage 4 → 5 | >60% AI-assisted PR ratio, governance compliance >95%, stable metrics for 8+ weeks |
+| Stage 1 -> 2 | Governance approved, pilot teams identified, tools documented |
+| Stage 2 -> 3 | Pilot metrics meet targets for 4+ weeks, no security incidents |
+| Stage 3 -> 4 | >50% of teams onboarded, shared workflows adopted, CI checks active |
+| Stage 4 -> 5 | >60% AI-assisted PR ratio, governance compliance >95%, stable metrics for 8+ weeks |
 | Ongoing | Quarterly review of all metrics, playbook updates, and workflow effectiveness |
 
 ---

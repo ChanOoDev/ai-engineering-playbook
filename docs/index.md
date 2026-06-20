@@ -17,10 +17,21 @@ The playbook is written for engineering leaders, platform teams, architects, dev
 
 1. Start with [Introduction](01-governance/introduction.md) to understand the operating model.
 2. Review [Governance](01-governance/governance.md) and [Ownership Matrix](01-governance/ownership-matrix.md) before enabling team-wide use.
-3. Configure the tooling in [Platform Setup](02-platform-setup/claude-code.md).
-4. Use the [Agents](03-agents/backend-developer.md) and [Skills](04-skills/aws-architect.md) sections to define delivery workflows.
+3. Configure the tooling in [Platform Setup](02-platform-setup/claude-code.md), then complete a [First AI-Assisted PR](02-platform-setup/first-ai-assisted-pr.md).
+4. Use the [Agent and Skill Selection Guide](03-agents/agent-skill-selection.md), [Agents](03-agents/backend-developer.md), and [Skills](04-skills/aws-architect.md) sections to define delivery workflows.
 5. Connect approved integrations through the [MCP](05-mcp/github.md) guidance.
-6. Adapt patterns from the [Reference Projects](06-reference-projects/product-management.md).
+6. Adapt patterns from the [Reference Project Implementation Guide](06-reference-projects/implementation-guide.md) and individual reference projects.
+
+## Junior Developer Path
+
+New to AI-assisted delivery? Follow this path:
+
+1. [Glossary](glossary.md) — learn the terms used in this playbook
+2. [Introduction](01-governance/introduction.md) — understand the principles
+3. [Governance](01-governance/governance.md) — know the rules
+4. [Junior Developer Quick Start](02-platform-setup/junior-developer-quickstart.md) — your safe first steps
+5. [First AI-Assisted PR](02-platform-setup/first-ai-assisted-pr.md) — your first workflow
+6. [AI Troubleshooting](02-platform-setup/ai-troubleshooting.md) — when things go wrong
 
 ## Local Commands
 

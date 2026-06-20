@@ -15,6 +15,22 @@ Use Claude Code for tasks that benefit from direct repository context:
 
 Claude Code is most effective when the user provides a clear goal, relevant constraints, and permission boundaries for file edits, commands, or external services.
 
+## AI IDE Layer
+
+Claude Code is one option in the broader AI IDE layer. Teams may also use tools such as Cursor, OpenCode, Windsurf, and Cline when they are approved for the same data and repository access model.
+
+Evaluate AI IDEs using consistent criteria:
+
+| Criterion | What To Check |
+| --- | --- |
+| Repository access | Which files can the tool read or modify, and can access be constrained? |
+| Command execution | Does the tool require confirmation before running commands or making destructive changes? |
+| Context handling | How does the tool load repository instructions, long context, and project memory? |
+| Integration support | Does it support MCP, plugins, skills, hooks, or CI workflows? |
+| Data protection | Where prompts, code snippets, telemetry, and logs are processed or stored |
+| Enterprise controls | SSO, audit logs, policy management, network controls, and admin visibility |
+
+Use the same governance principles regardless of IDE. The tool may change, but review, traceability, and human accountability do not.
 ## Setup Checklist
 
 1. Install the approved Claude Code client for your environment.

@@ -19,7 +19,11 @@ plugins:
 
 markdown_extensions:
   - admonition
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.details
   - pymdownx.highlight
   - pymdownx.inlinehilite
@@ -29,6 +33,7 @@ markdown_extensions:
 
 nav:
   - Home: index.md
+  - Glossary: glossary.md
 
   - Governance:
       - Introduction: 01-governance/introduction.md
@@ -38,14 +43,19 @@ nav:
 
   - Platform Setup:
       - Claude Code: 02-platform-setup/claude-code.md
+      - First AI-Assisted PR: 02-platform-setup/first-ai-assisted-pr.md
+      - Junior Developer Quick Start: 02-platform-setup/junior-developer-quickstart.md
+      - Git Daily Usage: 02-platform-setup/git-daily-usage.md
       - CLAUDE.md: 02-platform-setup/claude-md.md
       - AITMPL: 02-platform-setup/aitmpl.md
       - AITMPL Installation: 02-platform-setup/aitmpl-installation.md
       - MCP Setup: 02-platform-setup/mcp.md
       - CI/CD Integration: 02-platform-setup/ci-cd-integration.md
+      - AI Troubleshooting: 02-platform-setup/ai-troubleshooting.md
       - User Level Setup: 02-platform-setup/user-level-setup.md
 
   - Agents:
+      - Agent and Skill Selection: 03-agents/agent-skill-selection.md
       - Backend Developer: 03-agents/backend-developer.md
       - Frontend Developer: 03-agents/frontend-developer.md
       - DevOps Engineer: 03-agents/devops-engineer.md
@@ -71,6 +81,7 @@ nav:
       - Docker: 05-mcp/docker.md
 
   - Reference Projects:
+      - Implementation Guide: 06-reference-projects/implementation-guide.md
       - Product Management: 06-reference-projects/product-management.md
       - Authentication & RBAC: 06-reference-projects/authentication-rbac.md
       - AWS EC2 Hosted App: 06-reference-projects/aws-ec2-hosted-app.md

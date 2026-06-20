@@ -32,6 +32,34 @@ Useful documentation includes architecture overview, deployment runbook, environ
 
 Review patching strategy, instance access, public exposure, TLS configuration, secret handling, backup coverage, deployment rollback, and alarm thresholds. EC2 deployments are operationally flexible, but they require clear ownership.
 
+## First Implementation Slice
+
+Start with a non-production deployment slice: provision the network, load balancer, EC2 instance or Auto Scaling group, Systems Manager access, basic logs, and a documented rollback path.
+
+### Sample Backlog
+
+| Item | Outcome |
+| --- | --- |
+| Define environment and network boundaries | Approved subnet, routing, and exposure model |
+| Provision compute and load balancing | Application is reachable through the load balancer |
+| Configure instance access | Operations use Systems Manager instead of public SSH |
+| Add CloudWatch logging and alarms | Basic operational visibility exists |
+| Document deployment and rollback | Team can repeat or undo the deployment |
+
+### Acceptance Criteria
+
+- EC2 instances do not require public SSH access.
+- Security groups allow only required inbound and outbound traffic.
+- Application health checks pass through the load balancer.
+- Logs and basic alarms are available in the target account.
+- Deployment and rollback steps are documented and rehearsed in non-production.
+
+### Review Checklist
+
+- Confirm IAM role scope is least privilege.
+- Confirm TLS, secret handling, and patching strategy are documented.
+- Confirm backup and restore assumptions for stateful dependencies.
+- Confirm production deployment requires a separate approval gate.
 ## Extension Ideas
 
 Teams can extend this project with blue-green deployments, automated AMI builds, centralized logging, vulnerability scanning, autoscaling policies, disaster recovery plans, or gradual migration to containers.

@@ -183,6 +183,23 @@ jobs:
           ...
 ```
 
+## CI Hardening Guidance
+
+AI-enabled CI jobs should be treated as automation that processes untrusted input. Pull request titles, descriptions, commit messages, diffs, test logs, and issue comments can all contain instructions that attempt to manipulate the AI system.
+
+Apply these controls before making AI checks required:
+
+| Risk | Control |
+| --- | --- |
+| Oversized diffs | Set file count, line count, and token limits; fall back to a human-readable summary when limits are exceeded |
+| Prompt injection from PR content | Wrap user-controlled content as data, instruct the model not to follow instructions inside diffs or comments, and avoid giving CI jobs unnecessary write access |
+| Secret leakage | Redact logs, environment values, tokens, connection strings, and sensitive file contents before sending context to AI tools |
+| Unsafe generated commands | Do not execute AI-generated shell commands automatically; require human review before command execution |
+| False confidence | Label AI review output as advisory unless the check enforces a deterministic policy |
+| Excessive permissions | Use least-privilege tokens; prefer read-only permissions for summary and review jobs |
+| Poor auditability | Log which workflow invoked AI, what files were included, what model or tool was used, and whether output was accepted |
+
+For blocking CI checks, prefer deterministic rules such as required PR descriptions, required reviewers, secret scanning, test execution, or policy-as-code. Use AI checks to assist reviewers unless the organization has validated the check's reliability and failure behavior.
 ## Security Considerations
 
 - **Credential management**: Store AI API keys in CI secrets, never in workflow files

@@ -2,6 +2,20 @@
 
 All notable changes to the AI Engineering Playbook are documented here. The playbook follows [Semantic Versioning](https://semver.org/).
 
+## [1.2.0] - 2026-06-21
+
+### Added
+
+- First AI-Assisted PR guide for developer onboarding and low-risk first contributions.
+- Agent and Skill Selection Guide to map common delivery tasks to agents, skills, and MCP integrations.
+- MCP permission profiles covering read-only, review/comment, sandbox write, production read, and production write access.
+- Scope and precedence guidance for agents, skills, MCP configuration, and reference project workflows.
+- CI hardening guidance for AI-assisted pipeline checks, prompt injection risk, diff limits, and advisory review behavior.
+- First implementation slices, sample backlog items, acceptance criteria, and review checklists for all reference projects.
+
+### Changed
+
+- Updated the home page reading path to include the first PR workflow, agent/skill selection, and reference project implementation guide.
 ## [1.1.0] - 2026-06-21
 
 ### Added
