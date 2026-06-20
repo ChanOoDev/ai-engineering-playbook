@@ -7,13 +7,26 @@ All notable changes to the AI Engineering Playbook are documented here. The play
 ### Added
 
 - **MkDocs and GitHub Pages Guide** (`02-platform-setup/mkdocs-github-pages-guide.md`) — single reference for MkDocs configuration, local development, Markdown extensions, Mermaid diagrams, GitHub Pages deployment pipeline, adding pages/sections, and troubleshooting. Includes annotated `mkdocs.yml`, workflow file explanation, and step-by-step setup instructions.
-
-## [1.4.0] - 2026-06-21
-
-### Added
-
 - **Spec-Driven SDLC** (`07-spec-driven-sdlc/spec-driven-sdlc.md`) — full specification-driven software development lifecycle with AI assist. Covers 8 phases (Specify, Analyze, Design, Implement, Test, Review, Deploy, Learn), Mermaid diagrams, agent mapping, 10 pros and 10 cons, when-to-use guide, lightweight vs full spec decision matrix, and a full walkthrough example.
 - **Configuration Reference** (`02-platform-setup/configuration-reference.md`) — unified reference for all components (CLAUDE.md, agents, skills, MCPs, commands, hooks, settings) across all 4 configuration levels (user, project, directory, task/session). Includes precedence rules, decision matrix, and setup checklists.
+- **Glossary** (`glossary.md`) — 22 term definitions including CI/CD, IAM, PR, agent, skill, MCP, AITMPL, ADR, approval gate, permission profile, and more.
+- **Junior Developer Quick Start** (`02-platform-setup/junior-developer-quickstart.md`) — 9-step safe first path, "What Not To Use AI For" warning list, safe toolkit table, and when-to-stop guidance.
+- **AI Troubleshooting** (`02-platform-setup/ai-troubleshooting.md`) — 10 common problems junior developers encounter with causes, fixes, and prevention.
+- **Git Daily Usage** (`02-platform-setup/git-daily-usage.md`) — 100+ Git commands organized by task, branch strategy diagrams (GitHub Flow, Git Flow, Trunk-Based Development), git bisect, .gitignore basics, common workflows, and AI-assisted Git usage.
+- **First AI-Assisted PR** (`02-platform-setup/first-ai-assisted-pr.md`) — step-by-step workflow for a first low-risk AI-assisted pull request with Mermaid diagram, PR checklist, and related page cross-links.
+- **Agent and Skill Selection Guide** (`03-agents/agent-skill-selection.md`) — task mapping table, precedence order, scope boundaries, handoff diagram, and review questions.
+- **CLAUDE.md guidance page** (`02-platform-setup/claude-md.md`) — how to encode playbook governance into Claude Code's project context with complete example.
+- **CI/CD Integration page** (`02-platform-setup/ci-cd-integration.md`) — patterns for AI-assisted CI checks, PR summary generation, governance enforcement, and full pipeline example.
+- **Filled artifact examples** in Reference Project Implementation Guide — completed project brief, requirement, ADR, test plan, security review, and deployment runbook using Product Management as the domain.
+- **Junior Developer Path** on the homepage — 6-step reading list for developers new to AI-assisted delivery.
+- **Taxonomy badges** on all 8 agent pages and 6 skill pages — clarifies Role, Capability, or Orchestrator with cross-references.
+- **Example prompts** to all 8 agent pages, all 6 skill pages, and all 5 MCP pages.
+- **Example configurations** to all 5 MCP pages — JSON config snippets for Claude Code.
+- **Metrics and advancement criteria** to the Adoption Roadmap — concrete KPIs per stage.
+- **MCP permission profiles** — read-only, review/comment, sandbox write, production read, production write.
+- **CI hardening guidance** — prompt injection risk, diff limits, advisory review behavior.
+- **First implementation slices** — sample backlog items, acceptance criteria, and review checklists for all reference projects.
+- **Metadata footers** (last updated, version) to all content pages.
 
 ### Changed
 
@@ -23,58 +36,13 @@ All notable changes to the AI Engineering Playbook are documented here. The play
 - Fixed CI/CD Integration — replaced placeholder `...` in Full Pipeline example with real working steps.
 - Expanded User Level Setup — added macOS/Linux/Windows setup commands, verification checklist, environment hygiene commands, troubleshooting table, and cross-links.
 - Fixed SpecFlow Orchestrator — added clarifying note that the name refers to specification-driven delivery, not the BDD framework.
-- Added glossary terms: CI/CD, IAM, PR.
-- Added git bisect and .gitignore sections to Git Daily Usage.
-- Added inline template example to AITMPL page.
 - Added cross-links to all three reference project pages linking agent/skill names to their dedicated pages.
-
-## [1.3.0] - 2026-06-21
-
-### Added
-
-- **Glossary** (`glossary.md`) — 19 term definitions covering all operating terms a junior developer will encounter (agent, skill, MCP, AITMPL, ADR, approval gate, permission profile, etc.).
-- **Junior Developer Quick Start** (`02-platform-setup/junior-developer-quickstart.md`) — 9-step safe first path, "What Not To Use AI For" warning list, safe toolkit table, and when-to-stop guidance.
-- **AI Troubleshooting** (`02-platform-setup/ai-troubleshooting.md`) — 10 common problems junior developers encounter with causes, fixes, and prevention.
-- **Git Daily Usage** (`02-platform-setup/git-daily-usage.md`) — 100+ Git commands organized by task, branch strategy diagrams (GitHub Flow, Git Flow, Trunk-Based), common workflows, and AI-assisted Git usage.
-- **Filled artifact examples** in Reference Project Implementation Guide — completed project brief, requirement, ADR, test plan, security review, and deployment runbook using Product Management as the domain.
-- **Junior Developer Path** on the homepage — 6-step reading list for developers new to AI-assisted delivery.
-- **Cross-links** from onboarding pages to related governance, agent, skill, and troubleshooting pages.
-
-### Changed
-
+- Added inline template example to AITMPL page.
 - Fixed markdown spacing after Mermaid blocks in `first-ai-assisted-pr.md`, `implementation-guide.md`, `mcp.md`, and `agent-skill-selection.md`.
-
-## [1.2.0] - 2026-06-21
-
-### Added
-
-- First AI-Assisted PR guide for developer onboarding and low-risk first contributions.
-- Agent and Skill Selection Guide to map common delivery tasks to agents, skills, and MCP integrations.
-- MCP permission profiles covering read-only, review/comment, sandbox write, production read, and production write access.
-- Scope and precedence guidance for agents, skills, MCP configuration, and reference project workflows.
-- CI hardening guidance for AI-assisted pipeline checks, prompt injection risk, diff limits, and advisory review behavior.
-- First implementation slices, sample backlog items, acceptance criteria, and review checklists for all reference projects.
-
-### Changed
-
-- Updated the home page reading path to include the first PR workflow, agent/skill selection, and reference project implementation guide.
-
-## [1.1.0] - 2026-06-21
-
-### Added
-
-- **CLAUDE.md guidance page** (`02-platform-setup/claude-md.md`) — how to encode playbook governance into Claude Code's project context.
-- **CI/CD Integration page** (`02-platform-setup/ci-cd-integration.md`) — patterns for AI-assisted CI checks, PR summary generation, and governance enforcement.
-- **Changelog** (`changelog.md`) — this file.
-- **Taxonomy badges** on all agent and skill pages — clarifies whether a page describes a Role, Capability, or Orchestrator, with cross-references between related agents and skills.
-- **Example prompts** to all 8 agent pages, all 6 skill pages, and all 5 MCP pages — concrete prompt templates showing how to use each agent, skill, and integration.
-- **Example configurations** to all MCP pages — JSON config snippets for Claude Code integration.
-- **Metrics and advancement criteria** to the Adoption Roadmap — concrete KPIs per stage with measurement approaches and stage-transition thresholds.
-
-### Changed
-
-- Expanded Adoption Roadmap with per-stage metrics tables covering cycle time, review quality, developer satisfaction, security incidents, and governance compliance.
-- Added cross-references between related agents and skills (e.g., Backend Developer ↔ .NET Enterprise API, Platform Architect ↔ Platform Engineering).
+- Updated home page reading path to include first PR workflow, agent/skill selection, and reference project implementation guide.
+- Expanded Adoption Roadmap with per-stage metrics tables.
+- Added cross-references between related agents and skills.
+- Fixed GitHub Pages deployment workflow — switched to peaceiris/actions-gh-pages@v4 with explicit permissions.
 
 ## [1.0.0] - 2026-06-01
 
