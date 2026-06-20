@@ -38,8 +38,11 @@ nav:
 
   - Platform Setup:
       - Claude Code: 02-platform-setup/claude-code.md
+      - CLAUDE.md: 02-platform-setup/claude-md.md
       - AITMPL: 02-platform-setup/aitmpl.md
+      - AITMPL Installation: 02-platform-setup/aitmpl-installation.md
       - MCP Setup: 02-platform-setup/mcp.md
+      - CI/CD Integration: 02-platform-setup/ci-cd-integration.md
       - User Level Setup: 02-platform-setup/user-level-setup.md
 
   - Agents:
@@ -71,3 +74,5 @@ nav:
       - Product Management: 06-reference-projects/product-management.md
       - Authentication & RBAC: 06-reference-projects/authentication-rbac.md
       - AWS EC2 Hosted App: 06-reference-projects/aws-ec2-hosted-app.md
+
+  - Changelog: changelog.md
